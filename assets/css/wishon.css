@@ -6761,7 +6761,7 @@ ul {
 }
 
 .feature-three__title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   line-height: 30px;
   letter-spacing: 0;
@@ -7048,8 +7048,10 @@ ul {
   justify-content: center;
   width: 133px;
   height: 133px;
+  font-size: 48px;
+  color: var(--wishon-base);
   border-radius: 50%;
-  background-color: rgb(255, 255, 255);
+  background-color:white ;
   box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   z-index: 1;
@@ -7061,7 +7063,7 @@ ul {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  content: "";
+
   border-radius: 50%;
   background-color: var(--wishon-base);
   -webkit-transform: scale(0);
@@ -9287,6 +9289,18 @@ ul {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.blog-details__text-3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.blog-details__text-4 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.blog-details__text-5 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
 .blog-details__bottom {
   display: -webkit-box;
@@ -10893,7 +10907,9 @@ ul {
 }
 
 .become-volunteer__input input[type="text"],
-.become-volunteer__input input[type="email"] {
+.become-volunteer__input input[type="email"],
+.become-volunteer__input input[type="date"],
+.become-volunteer__input select {
   height: 64px;
   width: 100%;
   border: none;
@@ -10903,6 +10919,15 @@ ul {
   font-size: 14px;
   padding: 0 30px;
   border-radius: var(--wishon-bdr-radius);
+  appearance: none;
+}
+
+.become-volunteer__input select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'><path d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 12px;
 }
 
 .become-volunteer__input textarea {
@@ -10921,6 +10946,29 @@ ul {
   height: 164px;
 }
 
+.become-volunteer__input input[type="file"] {
+  background-color: var(--wishon-extra);
+  padding: 15px 20px;
+  border-radius: var(--wishon-bdr-radius);
+  font-size: 14px;
+  color: var(--wishon-gray);
+  width: 100%;
+  border: none;
+}
+
+.become-volunteer__input input[type="radio"],
+.become-volunteer__input input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: var(--wishon-base);
+}
+
+.become-volunteer__input label {
+  font-size: 14px;
+  color: var(--wishon-gray);
+  display: inline-block;
+  margin-right: 15px;
+}
+
 .become-volunteer__btn {
   background-color: var(--wishon-base);
   border: none;
@@ -10929,6 +10977,17 @@ ul {
 .become-volunteer__btn:after {
   background-color: var(--wishon-black);
 }
+
+/* Titres de section à l'intérieur du formulaire */
+.become-volunteer h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--wishon-base);
+  margin: 25px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 
 /*--------------------------------------------------------------
 # Blog Page

@@ -171,128 +171,212 @@
             <div class="container">
                 <div class="page-header__inner">
                     <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html">Acceuil</a></li>
                         <li><span>/</span></li>
-                        <li>Dons</li>
+                        <li>Devenir Membre</li>
                     </ul>
-                    <h2>Détails de la cause</h2>
+                    <h2>Devenir Membre</h2>
                 </div>
             </div>
         </section>
         <!--Page Header End-->
 
-        <!--Cause Details Start-->
-       <section class="cause-details">
+   <!--Become Volunteer Start-->
+<section class="become-volunteer">
     <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">Remplir le formulaire pour nous rejoindre</span>
+            <h2 class="section-title__title">Formulaire d'Adhésion</h2>
+        </div>
+
         <div class="row">
-            <div class="">
-                <div class="cause-details__left">
-                    <div class="cause-details__top">
-                        <div class="cause-details__img-box">
-                            <div class="cause-details__img">
-                                <img src="assets/images/backgrounds/vue.jpg" alt="Soins médicaux pour les plus vulnérables">
+            <div class="col-xl-12 col-lg-12">
+                <div class="become-volunteer__right">
+                    <form action="assets/inc/sendemail.php" class="become-volunteer__form contact-form-validated" novalidate="novalidate">
+                        <div class="row">
+
+                            <!-- SECTION 1 - INFORMATIONS PERSONNELLES -->
+                            <div class="col-xl-12">
+                                <h4>SECTION 1 - INFORMATIONS PERSONNELLES</h4>
                             </div>
-                            <div class="causes-one__category">
-                                <span>Développement communautaire</span>
-                            </div>
-                        </div>
-                        <div class="cause-details__content">
-                            <div class="cause-details__progress-box">
-                                <div class="progress-levels">
-                                    <!-- Progression -->
-                                    <div class="progress-box">
-                                        <div class="inner count-box">
-                                            <div class="bar">
-                                                <div class="bar-innner">
-                                                    <div class="skill-percent">
-                                                        <span class="count-text" data-speed="3000" data-stop="37">0</span>
-                                                        <span class="percent">%</span>
-                                                    </div>
-                                                    <div class="bar-fill" data-percent="37"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <select name="civilite">
+                                        <option value="">Civilité</option>
+                                        <option value="M.">M.</option>
+                                        <option value="Mme">Mme</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="cause-details__goals-box">
-                                <div class="cause-details__goals-left">
-                                <p><span>Objectif :</span> 3.000.000 FCFA soit 4.573 € ou 5.325 US$</p>  
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Nom *" name="nom" required>
                                 </div>
-                                <div class="cause-details__goals-right">
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Prénom *" name="prenom" required>
                                 </div>
                             </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="date" placeholder="Date de naissance *" name="date_naissance" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Ville de naissance *" name="ville_naissance" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <select name="pays_naissance" required>
+                                        <option value="">Pays de naissance *</option>
+                                        <option value="Benin">Bénin</option>
+                                        <option value="France">France</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Adresse *" name="adresse" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Code postal *" name="code_postal" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Ville *" name="ville" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="become-volunteer__input">
+                                    <select name="pays" required>
+                                        <option value="">Pays *</option>
+                                        <option value="Benin">Bénin</option>
+                                        <option value="France">France</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Téléphone mobile *" name="telephone" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="email" placeholder="Email *" name="email" required>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 2 - TYPE D'ADHÉSION -->
+                            <div class="col-xl-12">
+                                <h4>SECTION 2 - TYPE D'ADHÉSION</h4>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="become-volunteer__input">
+                                    <label><input type="radio" name="adhesion" value="Actif" required> Membre Actif - 50€/an</label><br>
+                                    <label><input type="radio" name="adhesion" value="Bienfaiteur"> Membre Bienfaiteur - 150€/an (ou plus)</label><br>
+                                    <label><input type="radio" name="adhesion" value="Adherent"> Membre Adhérent - [montant selon pays]</label><br>
+                                    <label><input type="radio" name="adhesion" value="Honneur"> Membre d'Honneur (sur proposition)</label>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 3 - PARRAINAGE -->
+                            <div class="col-xl-12">
+                                <h4>SECTION 3 - PARRAINAGE</h4>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Nom du parrain *" name="nom_parrain" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <input type="text" placeholder="Qualité/Fonction du parrain *" name="fonction_parrain" required>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="become-volunteer__input">
+                                    <label><input type="checkbox" name="membre_conseil" value="oui"> Membre du Conseil d'Administration : Oui</label>
+                                    <label><input type="checkbox" name="membre_conseil" value="non"> Non</label>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 4 - DOCUMENTS À TÉLÉCHARGER -->
+                            <div class="col-xl-12">
+                                <h4>SECTION 4 - DOCUMENTS À TÉLÉCHARGER</h4>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <label>CV 📎</label>
+                                    <input type="file" name="cv" accept=".pdf,.doc,.docx">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <label>Lettre de motivation 📎</label>
+                                    <input type="file" name="lettre_motivation" accept=".pdf,.doc,.docx">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <label>Copie pièce d'identité 📎</label>
+                                    <input type="file" name="piece_identite" accept=".pdf,.jpg,.png">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="become-volunteer__input">
+                                    <label>Casier judiciaire 📎 (pour postes à responsabilité)</label>
+                                    <input type="file" name="casier_judiciaire" accept=".pdf,.jpg,.png">
+                                </div>
+                            </div>
+                            
+
+                            <!-- BOUTON ENVOYER -->
+                            <div class="col-xl-12" style="margin-top: 15px;">
+                                <div class="become-volunteer__btn-box">
+                                    <button type="submit" class="thm-btn become-volunteer__btn">Envoyer ma demande</button>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-
-                    <h3 class="cause-details__title-1">Accès à l’eau potable et à l’assainissement</h3>
-                    <p class="cause-details__text-1">
-                        Dans de nombreuses communautés rurales, l’accès à l’eau potable reste un défi quotidien. 
-                        Le manque d’infrastructures et de systèmes d’assainissement expose les populations à des maladies hydriques évitables. 
-                        À travers cette initiative, nous finançons la <strong>construction de puits</strong>, la <strong>distribution d’eau propre</strong> 
-                        et la <strong>sensibilisation aux bonnes pratiques d’hygiène</strong> pour améliorer durablement les conditions de vie.
-                    </p>
-
-                    <p class="cause-details__text-2">
-                        Offrir de l’eau, c’est offrir la vie. Chaque contribution permet de rapprocher les villages d’une source d’eau potable, 
-                        de réduire les maladies liées à l’eau contaminée et d’améliorer la santé et le bien-être de familles entières. 
-                        Ensemble, nous pouvons construire des communautés plus saines et plus résilientes.
-                    </p>
-
-                    <h3 class="cause-details__title-2">Notre objectif</h3>
-                    <p class="cause-details__text-3">
-                        Notre objectif est de réunir <strong>5 000 000 FCFA</strong> pour construire des infrastructures hydrauliques durables, 
-                        fournir de l’eau potable aux villages isolés et mettre en place des campagnes d’éducation sur l’hygiène et l’assainissement. 
-                        Votre soutien est essentiel pour transformer la vie de milliers de personnes.
-                    </p>
-
-                    <ul class="cause-details__points list-unstyled">
-                        <li>
-                            <div class="icon">
-                                <span class="fa fa-check"></span>
-                            </div>
-                            <div class="text">
-                                <p>Construction de puits et installation de systèmes d’eau potable.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <span class="fa fa-check"></span>
-                            </div>
-                            <div class="text">
-                                <p>Distribution d’eau propre aux communautés vulnérables.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <span class="fa fa-check"></span>
-                            </div>
-                            <div class="text">
-                                <p>Programmes de sensibilisation à l’hygiène et à l’assainissement.</p>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <p class="cause-details__text-4">
-                        L’accès à l’eau potable est un droit fondamental. En soutenant cette cause, vous contribuez directement à sauver des vies, 
-                        prévenir des maladies et offrir un avenir plus sain à des communautés entières.
-                    </p>
-
-                    <div class="cause-details__btn-and-social">
-                        <div class="cause-details__btn-box">
-                            <a href="https://wa.me/33603850544?text=Je%20souhaite%20faire%20un%20don%20%C3%A0%20cette%20cause....." target="_blank" class="cause-details__btn thm-btn">Faire un don</a>
-                        </div>
-                    </div>
-
+                    </form>
+                    <div class="result"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!--Become Volunteer End-->
 
-        <!--Cause Details End-->
 
-          <!--Site Footer Start-->
+         <!--Site Footer Start-->
         <footer class="site-footer site-footer-two">
             <div class="site-footer__shape-1 float-bob-y">
                 <img src="assets/images/shapes/footer-shape-1.png" alt="">
@@ -480,7 +564,7 @@
 
 
     <!-- template js -->
-     
+    
     <script src="assets/js/wishon.js"></script>
 </body>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title> ONG B.I.E </title>
+    <title> ONG B.I.E </title>
     <!-- favicons Icons -->
 <!--     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
@@ -17,6 +17,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -49,6 +50,11 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/wishon.css" />
     <link rel="stylesheet" href="assets/css/wishon-responsive.css" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -62,7 +68,7 @@
 
 
     <div class="page-wrapper">
-         <header class="main-header">
+        <header class="main-header">
             <div class="main-header__top">
                 <div class="main-header__top-wrapper">
                     <div class="main-header__top-inner">
@@ -96,9 +102,9 @@
                         </div>
                         <div class="main-header__top-right main-header__social">
                             
-                                 <a href="#" class="fab fa-tiktok"></a>
+                                  <a href="#" class="fab fa-tiktok"></a>
                     <a href="#" class="fab fa-facebook-square"></a>
-                    <a href="#" class="fab fa-youtube"></a>
+                    <a href="https://youtube.com/@ahovissidjakpoprosperelisee?feature=shared" class="fab fa-youtube"></a>
                     <a href="#" class="fab fa-instagram"></a>
                             
                             
@@ -120,8 +126,18 @@
                                     <li>
                                         <a href="index.html">Accueil </a>
                                     </li>
-                                    <li><a href="about.html">À propos</a></li>
+                                    
+                                    <li class="dropdown">
+                                            <a href="#">Nous connaître
+</a>
+                                            <ul>
+                                                <li><a href="about.html">Notre histoire</a></li>
+                                                <li><a href="gouvernance.html">Gouvernance</a></li>
+                                                <li><a href="motPR.html">Mot du président</a></li>
+                                            </ul>
+                                        </li>
                                     <li><a href="causes.html">Nos actions</a></li>
+                                    <li><a href="blog.html">Actualités</a></li>
                                     
                                     <li>
                                         <a href="contact.html">Contact</a>
@@ -134,7 +150,7 @@
                                 
                                 
                                 <div class=" main-menu__search-box main-menu__btn-box">
-                                    <a href="causes.html" target="_blank" class="thm-btn main-menu__btn">Faire un don</a>
+                                    <a href="become-volunteer.html" class="thm-btn main-menu__btn">Devenir membre</a>
                                 </div>
                             </div>
                         </div>
@@ -167,9 +183,7 @@
 
         <!--About Three Start-->
         <section class="about-three">
-            <div class="about-three__shape-1 float-bob-x">
-                <img src="assets/images/shapes/about-three-shape-1.png" alt="">
-            </div>
+            
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
@@ -177,7 +191,7 @@
                             <div class="section-title text-left">
                                 <h2 class="section-title__title">Notre Histoire</h2>
                             </div>
-                            <p class="about-three__text">Fondée en 2016 à Meaux par Ahovissi Djakpo Prosper Elisee, Bien-Être International (B.E.I) mène des actions humanitaires en France, en Afrique et ailleurs. Après ses débuts locaux, l’ONG s’est développée à l’international avec des programmes d’aide aux plus vulnérables. Aujourd’hui, elle est présente dans 15 pays, mobilise plus de 230 bénévoles et a soutenu plus de 50 000 bénéficiaires, avec pour mission de rendre le bien-être accessible à tous, sans distinction.</p>
+                            <p class="about-three__text">’ONG Bien-Être International naît en 2016 à Meaux en France sous l’impulsion de Prosper Élisée Ahovissi Djakpo convaincu que le bien-être est un droit fondamental. Inspirée par une expérience au Centre National Universitaire de Psychiatrie de Jacquot au Bénin, l’idée devient une action concrète. Officiellement enregistrée en France et reconnue au Bénin en 2019, B.E.I débute ses actions humanitaires avec un premier don de médicaments et de matériel en 2021. Depuis, elle se structure, crée des délégations et mobilise des bénévoles unis autour d’un même idéal de solidarité et d’aide durable.</p>
                             <div class="about-three__progress">
                                 <div class="about-three__progress-single">
                                     <h4 class="about-three__progress-title">Aide Humanitaire</h4>
@@ -198,18 +212,7 @@
                             </div>
                             <div class="about-three__person-details">
                                
-                                <div class="about-three__person">
-                                    <div class="about-three__person-img">
-                                    <img src="assets/images/resources/our-goal-person-img.png" alt="">
-                                        <div class="about-three__person-shape-1">
-                                            <img src="assets/images/shapes/about-three-person-shape-1.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="about-three__person-content">
-                                        <h3 class="about-three__person-name">Ahovissi Djakpo Prosper Elisee</h3>
-                                        <p class="about-three__person-sub-title">Fondateur & Président</p>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -225,6 +228,125 @@
         </section>
         <!--About Three End-->
 
+          <!--Feature Three Start-->
+        <section class="feature-three">
+            <div class="container">
+                <div class="row">
+                    <!--Feature Three Single Start-->
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="feature-three__single">
+                        
+                            <div class="feature-three__content">
+                                <h3 class="feature-three__title"><a href="become-volunteer.html">Notre Mission</a>
+                                </h3>
+                                <p class="feature-three__text">Bien-Être International agit pour apporter une aide directe aux populations vulnérables sans distinction. Ses priorités sont l’aide humanitaire d’urgence, le soutien à la santé, l’éducation et la formation, la sécurité alimentaire, l’autonomisation économique ainsi que le plaidoyer et la sensibilisation. Chaque action est menée avec rigueur et transparence pour améliorer concrètement la vie des personnes aidées.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Feature Three Single End-->
+                    <!--Feature Three Single Start-->
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="feature-three__single feature-three__single-2">
+                           
+                            <div class="feature-three__content">
+                                <h3 class="feature-three__title"><a href="cause-details.html">Notre Vision</a></h3>
+                                <p class="feature-three__text">B.E.I aspire à un monde où le bien-être est accessible à tous. L’organisation croit en un modèle de développement durable respectueux de la planète et des générations futures. Elle œuvre pour une solidarité universelle où chaque communauté peut se renforcer et affronter les défis majeurs comme la pauvreté, le changement climatique et les crises sanitaires. Son objectif est de faire du “mieux vivre” une réalité partagée pour tous.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Feature Three Single End-->
+                    <!--Feature Three Single Start-->
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="feature-three__single feature-three__single-3">
+                           
+                            <div class="feature-three__content">
+                                <h2 class="feature-three__title "><a href="cause-details.html">Nos Valeurs</a></h2>
+                                <p class="feature-three__text">Les actions de B.E.I reposent sur six piliers : la solidarité humaniste, la dignité et le respect, l’intégrité et la transparence, l’engagement durable, le bénévolat désintéressé et l’inclusivité sans discrimination. Ces valeurs guident nos choix et nos actions, renforcent la confiance avec nos partenaires et assurent que chaque projet soit mené avec humanité, rigueur, impact positif durable et engagement constant envers tous.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Feature Three Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Feature Three End-->
+ <!--Counter One Start-->
+        <section class="counter-one">
+            <div class="counter-one__bg"
+                style="background-image: url(assets/images/backgrounds/counter-one-bg-img.png);"></div>
+            <div class="container">
+                <div class="row">
+                    <!--Counter One Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="counter-one__single">
+                            <div class="counter-one__icon-box">
+                               
+                                <div class="counter-one__icon">
+                                    <span class="icon-campaign"></span>
+                                </div>
+                            </div>
+                            <div class="counter-one__count-box">
+                                <h3 class="odometer" data-count="98">00</h3>
+                                <span class="counter-one__letter"></span>
+                                <p class="counter-one__text">dons au total</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Counter One Single End-->
+                    <!--Counter One Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="counter-one__single counter-one__single-2">
+                            <div class="counter-one__icon-box">
+                                <div class="counter-one__icon">
+                                    <span class="icon-budget"></span>
+                                </div>
+                            </div>
+                            <div class="counter-one__count-box">
+                                <span class="counter-one__letter">+</span>
+                                <h3 class="odometer" data-count="43">30</h3>
+                                <p class="counter-one__text">Projets financés</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Counter One Single End-->
+                    <!--Counter One Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="counter-one__single counter-one__single-3">
+                            <div class="counter-one__icon-box">
+                               
+                                <div class="counter-one__icon">
+                                    <span class="icon-social-campaign"></span>
+                                </div>
+                            </div>
+                            <div class="counter-one__count-box">
+                                <span class="counter-one__letter">+</span>
+                                <h3 class="odometer" data-count="136">00</h3>
+                                <p class="counter-one__text">Donateurs satisfaits</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Counter One Single End-->
+                    <!--Counter One Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="counter-one__single counter-one__single-4">
+                            <div class="counter-one__icon-box">
+                              
+                                <div class="counter-one__icon">
+                                    <span class="icon-help"></span>
+                                </div>
+                            </div>
+                            <div class="counter-one__count-box">
+                                <span class="counter-one__letter">+</span>
+                                <h3 class="odometer" data-count="52">00</h3>
+                                <p class="counter-one__text">Bénévoles engagés</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Counter One Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Counter One End-->
         <!--Testimonial Three Start-->
         <section class="testimonial-three">
             <div class="testimonial-three__bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
@@ -379,7 +501,7 @@
    
 
 
-        <!--Site Footer Start-->
+         <!--Site Footer Start-->
         <footer class="site-footer site-footer-two">
             <div class="site-footer__shape-1 float-bob-y">
                 <img src="assets/images/shapes/footer-shape-1.png" alt="">
@@ -456,12 +578,12 @@
                         <div class="col-xl-12">
                             <div class="site-footer__bottom">
                                 <div class="site-footer__bottom-inner">
-                                    <p class="site-footer__bottom-text">© Copyright 2024 - ONG B.E.I - Tous droits réservés by <a href="#">L'EQUIPE GBAYE</a>
+                                    <p class="site-footer__bottom-text">© Copyright 2024 - ONG B.E.I - Tous droits réservés by <a href="#">ONG B.E.I</a>
                                     </p>
                                     <div class="site-footer__social">
                                          <a href="#" class="fab fa-tiktok"></a>
                     <a href="#" class="fab fa-facebook-square"></a>
-                    <a href="#" class="fab fa-youtube"></a>
+                    <a href="https://youtube.com/@ahovissidjakpoprosperelisee?feature=shared" class="fab fa-youtube"></a>
                     <a href="#" class="fab fa-instagram"></a>
                                     </div>
                                 </div>
@@ -472,6 +594,7 @@
             </div>
         </footer>
         <!--Site Footer End-->
+
 
 
     </div><!-- /.page-wrapper -->
@@ -566,6 +689,7 @@
 
 
     <!-- template js -->
+     
     <script src="assets/js/wishon.js"></script>
 </body>
 
