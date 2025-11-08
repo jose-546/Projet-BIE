@@ -10359,6 +10359,14 @@ ul {
   margin-bottom: 23px;
 }
 
+.cause-details__titl {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 40px;
+  margin-top: 33px;
+  margin-bottom: 23px;
+}
+
 .cause-details__text-2 {
   margin-top: 30px;
   margin-bottom: 76px;
