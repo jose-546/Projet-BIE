@@ -621,9 +621,30 @@
         <!--Page Header End-->
 
          <div class="kn7p2m causes-one">
-             <div class="section-title text-center">
-                            <span class="section-title__tagline">Structure et répartition des responsabilités</span>
-                            <h2 class="section-title__title">Organigramme</h2>
+            <div class="section-title text-center">
+    <span class="section-title__tagline">Structure et répartition des responsabilités</span>
+    <h2 class="section-title__title">Organigramme</h2>
+    <h4 class="" style="margin-top: 6px;">Bureau principal de la France</h4>
+</div>
+
+<div class="zk8m3x">
+    <div class="wq5n7p">
+        <div class="hv2k9m" id="tm5x8k_france"></div>
+        
+        <div class="lk5m8p">
+            <button class="dx9p4m" id="gp2n9x_france" aria-label="Précédent">‹</button>
+            <span class="nm6k2x" id="vn7k4m_france"></span>
+            <button class="cv3n7k" id="hk9m2p_france" aria-label="Suivant">›</button>
+            <button class="pv8m3n" id="qx6n8m_france">Pause</button>
+        </div>
+    </div>
+</div>
+
+
+
+             <div class="section-title text-center" style="margin-top:60px;">
+                                <h4>Bureau principal du Bénin</h4>
+
                 </div>
 
          <div class="zk8m3x">
@@ -638,6 +659,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Slider France -->
 
         <div class="ollk">
 
@@ -1069,6 +1092,79 @@
             }
         ];
 
+
+        const membresFrance = [
+    {
+         nom: "AHOVISSI DJAKPO Prosper Elisée",
+                roles: ["Président fondateur"],
+                photo: "img/pr.jpg"
+    },
+    {
+        nom: "BOUNDA MAKEMBE J. LUCIEN",
+        roles: ["Vice-Président"],
+        photo: ""
+    },
+    {
+        nom: "GOLBAC EMMANUELLA",
+        roles: ["Secrétaire Générale"],
+        photo: "img/emanuella.jpg"
+    },
+    {
+        nom: "SEDJRO ZINSOU Nadia Ida",
+        roles: ["Trésorière Générale"],
+        photo: "img/Nadia.jpg"
+    },
+    {
+        nom: "AHEHEHINNOU Eric M. (Docteur)",
+        roles: ["Conseiller juridique Principal"],
+        photo: ""
+    },
+    {
+        nom: "KADONOUGAN Damien",
+        roles: [" Conseiller juridique Adjoint"],
+        photo: ""
+    },
+    {
+        nom: "SIFRAN Gérard",
+        roles: ["Premier conseiller spécial"],
+        photo: ""
+    },
+    {
+        nom: "DJIKPESSE Gladys",
+        roles: ["Deuxième conseiller spécial"],
+        photo: "img/gladys.jpg"
+    },
+    {
+        nom: "POLYPHEME Luce Véronique",
+        roles: ["Trésorière nationale adjointe"],
+        photo: "img/ranti.jpg"
+    },
+    {
+        nom: "ALATADE Faustin",
+        roles: ["Délégué National"],
+        photo: "img/faustin.jpg"
+    },
+    {
+        nom: "TSHITOKO-NDAYE Nicole",
+        roles: ["Trésorière régionale"],
+        photo: "img/nicole.jpg"
+    },
+    {
+        nom: "FRANKLIN KAZADI KANDA",
+        roles: ["Délégué chargé de la communication et de l’informatique"],
+        photo: ""
+    },
+    {
+        nom: "Lucie Catalan",
+        roles: ["Déléguée chargée de la relation publique"],
+        photo: ""
+    }
+];
+
+let xm4k7nFr = 0;
+let bn8p2xFr = null;
+let kv5m9pFr = true;
+
         let xm4k7n = 0;
         let bn8p2x = null;
         let kv5m9p = true;
@@ -1172,6 +1268,92 @@
 
         afficherMembre(0);
         demarrerAutoPlay();
+
+        // Fonctions pour le slider France
+function afficherMembreFrance(index) {
+    const membre = membresFrance[index];
+    const container = document.getElementById('tm5x8k_france');
+    
+    let photoHTML = '';
+    if (membre.photo && membre.photo.trim() !== '') {
+        photoHTML = `<img src="${membre.photo}" alt="${membre.nom}" class="rt6m2k">`;
+    } else {
+        const initiales = getInitiales(membre.nom);
+        photoHTML = `<div class="yn3p7x">${initiales}</div>`;
+    }
+    
+    const rolesHTML = membre.roles.map(role => 
+        `<div class="qw7n3m">${role}</div>`
+    ).join('');
+    
+    container.innerHTML = `
+        <div class="jx4p8n">${photoHTML}</div>
+        <h2 class="bm9k4v">${membre.nom}</h2>
+        <div class="fp8x2n">${rolesHTML}</div>
+    `;
+    
+    document.getElementById('vn7k4m_france').textContent = `${index + 1} / ${membresFrance.length}`;
+}
+
+function suivantFrance() {
+    xm4k7nFr = (xm4k7nFr + 1) % membresFrance.length;
+    afficherMembreFrance(xm4k7nFr);
+}
+
+function precedentFrance() {
+    xm4k7nFr = (xm4k7nFr - 1 + membresFrance.length) % membresFrance.length;
+    afficherMembreFrance(xm4k7nFr);
+}
+
+function togglePauseFrance() {
+    const btn = document.getElementById('qx6n8m_france');
+    kv5m9pFr = !kv5m9pFr;
+    
+    if (kv5m9pFr) {
+        btn.textContent = 'Pause';
+        btn.classList.remove('xr4k9m');
+        demarrerAutoPlayFrance();
+    } else {
+        btn.textContent = 'Lecture';
+        btn.classList.add('xr4k9m');
+        arreterAutoPlayFrance();
+    }
+}
+
+function demarrerAutoPlayFrance() {
+    if (bn8p2xFr) clearInterval(bn8p2xFr);
+    bn8p2xFr = setInterval(suivantFrance, 4000);
+}
+
+function arreterAutoPlayFrance() {
+    if (bn8p2xFr) {
+        clearInterval(bn8p2xFr);
+        bn8p2xFr = null;
+    }
+}
+
+// Event listeners pour le slider France
+document.getElementById('hk9m2p_france').addEventListener('click', () => {
+    suivantFrance();
+    if (kv5m9pFr) {
+        arreterAutoPlayFrance();
+        demarrerAutoPlayFrance();
+    }
+});
+
+document.getElementById('gp2n9x_france').addEventListener('click', () => {
+    precedentFrance();
+    if (kv5m9pFr) {
+        arreterAutoPlayFrance();
+        demarrerAutoPlayFrance();
+    }
+});
+
+document.getElementById('qx6n8m_france').addEventListener('click', togglePauseFrance);
+
+// Initialiser le slider France
+afficherMembreFrance(0);
+demarrerAutoPlayFrance();
     </script>
 
     <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
