@@ -3,230 +3,1013 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - BEI</title>
+    <title>Actualités et Projets - Bien-Être International</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      
-
-        .X9pL2 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .K7mN4 {
-            max-width: 1200px;
-            width: 100%;
+        .x7K9mN_wrapper {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: #2d3748;
+            line-height: 1.7;
+        }
+
+        .x7K9mN_hero {
+            background: linear-gradient(135deg, #1a5f4a 0%, #2d8a6e 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .x7K9mN_hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .x7K9mN_hero h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .x7K9mN_hero-sub {
+            font-size: 17px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .x7K9mN_container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .x7K9mN_intro {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            margin: -50px 20px 60px;
+            position: relative;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .x7K9mN_intro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .R5tQ8 {
-            background: white;
-            border-radius: 15px;
-            padding: 35px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .R5tQ8:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .B3wP9 {
-            color: #667eea;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .Y8nL1 {
-            color: #764ba2;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .M6vK3 {
-            margin-bottom: 15px;
+        .x7K9mN_intro-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 16px;
         }
 
-        .T4hD7 {
-            color: #667eea;
-            font-size: 18px;
-            margin-top: 3px;
+        .x7K9mN_intro-icon {
+            width: 48px;
+            height: 48px;
+            background: #e8f5f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
         }
 
-        .J9fS2 {
-            flex: 1;
+        .x7K9mN_intro-icon i {
+            font-size: 22px;
+            color: #1a5f4a;
         }
 
-        .W2xC5 {
-            color: #666;
+        .x7K9mN_intro-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1a202c;
+        }
+
+        .x7K9mN_intro-item p {
             font-size: 13px;
+            color: #718096;
+        }
+
+        .x7K9mN_section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .x7K9mN_section-title h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .x7K9mN_section-title p {
+            color: #718096;
+            font-size: 16px;
+        }
+
+        .x7K9mN_divider {
+            width: 60px;
+            height: 4px;
+            background: #1a5f4a;
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        .x7K9mN_projects {
+            padding: 60px 0 80px;
+        }
+
+        /* Ajout des styles pour les onglets de filtrage (En cours / À venir) */
+        .x7K9mN_filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .x7K9mN_filter-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+            background: #fff;
+            color: #4a5568;
+        }
+
+        .x7K9mN_filter-tab:hover {
+            border-color: #1a5f4a;
+            color: #1a5f4a;
+        }
+
+        .x7K9mN_filter-tab.x7K9mN_active {
+            background: #1a5f4a;
+            border-color: #1a5f4a;
+            color: #fff;
+        }
+
+        .x7K9mN_filter-tab i {
+            font-size: 18px;
+        }
+
+        .x7K9mN_filter-tab .x7K9mN_tab-count {
+            background: rgba(0,0,0,0.1);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .x7K9mN_filter-tab.x7K9mN_active .x7K9mN_tab-count {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Styles pour le titre de catégorie */
+        .x7K9mN_category-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .x7K9mN_category-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .x7K9mN_category-icon i {
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .x7K9mN_category-icon.x7K9mN_en-cours {
+            background: #1a5f4a;
+        }
+
+        .x7K9mN_category-icon.x7K9mN_a-venir {
+            background: #e67e22;
+        }
+
+        .x7K9mN_category-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .x7K9mN_category-header span {
+            font-size: 14px;
+            color: #718096;
+            font-weight: 400;
+        }
+
+        .x7K9mN_projects-category {
+            margin-bottom: 50px;
+        }
+
+        .x7K9mN_projects-category.x7K9mN_hidden {
+            display: none;
+        }
+        /* Fin styles catégories */
+
+        .x7K9mN_project-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .x7K9mN_project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+        }
+
+        .x7K9mN_card-header {
+            padding: 28px 30px;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .x7K9mN_card-num {
+            width: 50px;
+            height: 50px;
+            background: #1a5f4a;
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Numéro orange pour projets à venir */
+        .x7K9mN_card-num.x7K9mN_a-venir {
+            background: #e67e22;
+        }
+
+        .x7K9mN_card-header h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a202c;
+            line-height: 1.5;
+        }
+
+        /* Badge de statut sur la carte */
+        .x7K9mN_status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 5px;
+            margin-left: auto;
+            flex-shrink: 0;
         }
 
-        .P7bN8 {
-            color: #333;
+        .x7K9mN_status-badge.x7K9mN_en-cours {
+            background: #e8f5f0;
+            color: #1a5f4a;
+        }
+
+        .x7K9mN_status-badge.x7K9mN_a-venir {
+            background: #fef3e6;
+            color: #e67e22;
+        }
+
+        .x7K9mN_status-badge i {
+            font-size: 12px;
+        }
+
+        .x7K9mN_card-body {
+            padding: 28px 30px;
+        }
+
+        .x7K9mN_card-body p {
+            color: #4a5568;
             font-size: 15px;
-            line-height: 1.6;
+            margin-bottom: 16px;
         }
 
-        .A1zR6 {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.2s ease;
+        .x7K9mN_card-body p:last-of-type {
+            margin-bottom: 0;
         }
 
-        .A1zR6:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        .L4gV9 {
-            background: #f8f9ff;
-            border-radius: 8px;
-            padding: 15px;
+        .x7K9mN_objectives {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 24px;
             margin-top: 20px;
         }
 
-        .F3nH5 {
-            color: #764ba2;
+        .x7K9mN_objectives h4 {
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 10px;
+            color: #1a5f4a;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .Q8mT2 {
-            color: #555;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 5px;
+        .x7K9mN_obj-list {
+            list-style: none;
+        }
+
+        .x7K9mN_obj-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .x7K9mN_obj-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .x7K9mN_obj-list li i {
+            color: #1a5f4a;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .x7K9mN_obj-list strong {
+            color: #2d3748;
+        }
+
+        .x7K9mN_card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .x7K9mN_tag {
+            background: #e8f5f0;
+            color: #1a5f4a;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           STYLE BOUTON SOUTENIR CE PROJET - DEBUT
+           ======================================== */
+        .x7K9mN_btn_soutenir_projet {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #c0392b;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .x7K9mN_btn_soutenir_projet:hover {
+            background: #a93226;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.35);
+        }
+
+        .x7K9mN_btn_soutenir_projet:active {
+            transform: translateY(0);
+        }
+
+        .x7K9mN_btn_soutenir_projet i {
+            font-size: 18px;
+        }
+        /* ========================================
+           STYLE BOUTON SOUTENIR CE PROJET - FIN
+           ======================================== */
+
+        .x7K9mN_summary {
+            background: linear-gradient(135deg, #1a5f4a 0%, #2d8a6e 100%);
+            padding: 70px 20px;
+            color: #fff;
+        }
+
+        .x7K9mN_summary-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .x7K9mN_summary h2 {
+            font-size: clamp(22px, 4vw, 28px);
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .x7K9mN_summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .x7K9mN_summary-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: background 0.3s ease;
+        }
+
+        .x7K9mN_summary-card:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .x7K9mN_summary-card-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .x7K9mN_summary-num {
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            color: #1a5f4a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .x7K9mN_summary-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .x7K9mN_summary-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .x7K9mN_conclusion {
+            padding: 70px 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .x7K9mN_conclusion-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .x7K9mN_conclusion-icon {
+            width: 70px;
+            height: 70px;
+            background: #e8f5f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .x7K9mN_conclusion-icon i {
+            font-size: 32px;
+            color: #1a5f4a;
+        }
+
+        .x7K9mN_conclusion h2 {
+            font-size: clamp(20px, 4vw, 26px);
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+
+        .x7K9mN_conclusion p {
+            color: #4a5568;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .x7K9mN_stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .x7K9mN_stat-item {
+            text-align: center;
+        }
+
+        .x7K9mN_stat-num {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a5f4a;
+        }
+
+        .x7K9mN_stat-label {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 4px;
         }
 
         @media (max-width: 768px) {
-            .K7mN4 {
+            .x7K9mN_hero {
+                padding: 60px 20px;
+            }
+
+            .x7K9mN_intro {
+                padding: 28px;
+                margin: -40px 15px 50px;
+            }
+
+            .x7K9mN_card-header {
+                padding: 22px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .x7K9mN_status-badge {
+                margin-left: 0;
+            }
+
+            .x7K9mN_card-body {
+                padding: 22px;
+            }
+
+            .x7K9mN_objectives {
+                padding: 18px;
+            }
+
+            .x7K9mN_summary-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .R5tQ8 {
-                padding: 25px;
+
+            .x7K9mN_stats {
+                gap: 30px;
             }
+
+            .x7K9mN_btn_soutenir_projet {
+                width: 100%;
+                padding: 14px 24px;
+            }
+
+            .x7K9mN_filter-tabs {
+                gap: 8px;
+            }
+
+            .x7K9mN_filter-tab {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+
+        .x7K9mN_fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .x7K9mN_fade-in.x7K9mN_visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="X9pL2">
-        <div class="K7mN4">
-            <!-- Carte Bénin -->
-            <div class="R5tQ8 G5xY4">
-                <h2 class="B3wP9">ONG BIEN ÊTRE INTERNATIONAL – BEI</h2>
-                <p class="Y8nL1">Bureau National – République du Bénin</p>
-
-                <div class="M6vK3">
-                    <span class="T4hD7">📍</span>
-                    <div class="J9fS2">
-                        <div class="W2xC5">Adresse</div>
-                        <div class="P7bN8">
-                            Carré 767, Dandji 2 – Abattoir PK6<br>
-                            BP : 69 33 Cotonou
-                        </div>
-                    </div>
-                </div>
-
-                <div class="M6vK3">
-                    <span class="T4hD7">📞</span>
-                    <div class="J9fS2">
-                        <div class="W2xC5">Téléphone</div>
-                        <div class="P7bN8">
-                            <a href="tel:+22901973392" class="A1zR6">+229 01 97 33 92 33</a><br>
-                            <a href="tel:+22901481574" class="A1zR6">+229 01 48 15 74 73</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="M6vK3">
-                    <span class="T4hD7">✉️</span>
-                    <div class="J9fS2">
-                        <div class="W2xC5">Email</div>
-                        <div class="P7bN8">
-                            <a href="mailto:beiassociabj@gmail.com" class="A1zR6">beiassociabj@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="L4gV9">
-                    <div class="F3nH5">Informations légales</div>
-                    <div class="Q8mT2">Récépissé : 2019 / N°22 / 1 / MISP / DC / SGM / DAIC / SAAP – ASSOC / SA</div>
-                    <div class="Q8mT2">IFU : 62 02 58 06 85 14 3</div>
-                </div>
+    <div class="x7K9mN_wrapper">
+        <!-- Hero Section -->
+        <section class="x7K9mN_hero">
+            <div class="x7K9mN_hero-badge">
+                <i class='bx bx-calendar'></i>
+                <span>Période 2025 - 2026</span>
             </div>
+            <h1>Actualités et Projets</h1>
+            <p class="x7K9mN_hero-sub">Découvrez les six projets significatifs de BIEN-ÊTRE INTERNATIONAL pour un impact durable</p>
+        </section>
 
-            <!-- Carte France -->
-            <div class="R5tQ8 H8kJ6">
-                <h2 class="B3wP9">ONG BIEN ÊTRE INTERNATIONAL – BEI</h2>
-                <p class="Y8nL1">Siège Social – République Française</p>
-
-                <div class="M6vK3">
-                    <span class="T4hD7">📍</span>
-                    <div class="J9fS2">
-                        <div class="W2xC5">Adresse</div>
-                        <div class="P7bN8">
-                            47 rue René Bazin, Appt. 68 – Rez-de-chaussée<br>
-                            77100 Meaux – France
-                        </div>
+        <!-- Intro Stats -->
+        <div class="x7K9mN_intro x7K9mN_fade-in">
+            <div class="x7K9mN_intro-grid">
+                <div class="x7K9mN_intro-item">
+                    <div class="x7K9mN_intro-icon">
+                        <i class='bx bx-book-reader'></i>
+                    </div>
+                    <div>
+                        <h3>Éducation</h3>
+                        <p>Soutien scolaire et accompagnement pédagogique</p>
                     </div>
                 </div>
-
-                <div class="M6vK3">
-                    <span class="T4hD7">📞</span>
-                    <div class="J9fS2">
-                        <div class="W2xC5">Téléphone</div>
-                        <div class="P7bN8">
-                            <a href="tel:+33603850544" class="A1zR6">06 03 85 05 44</a><br>
-                            <a href="tel:+33647413599" class="A1zR6">06 47 41 35 99</a><br>
-                            <a href="tel:+33763025617" class="A1zR6">07 63 02 56 17</a><br>
-                            <a href="tel:+33986336806" class="A1zR6">09 86 33 68 06</a> (Bureau)
-                        </div>
+                <div class="x7K9mN_intro-item">
+                    <div class="x7K9mN_intro-icon">
+                        <i class='bx bx-heart'></i>
+                    </div>
+                    <div>
+                        <h3>Inclusion Sociale</h3>
+                        <p>Prise en charge des personnes handicapées</p>
                     </div>
                 </div>
-
-                <div class="M6vK3">
-                    <span class="T4hD7">✉️</span>
-                    <div class="J9fS2">
-                        <div class="W2xC5">Email</div>
-                        <div class="P7bN8">
-                            <a href="mailto:contact@bienetreinternational.org" class="A1zR6">contact@bienetreinternational.org</a><br>
-                            <a href="mailto:beiassocia@gmail.com" class="A1zR6">beiassocia@gmail.com</a>
-                        </div>
+                <div class="x7K9mN_intro-item">
+                    <div class="x7K9mN_intro-icon">
+                        <i class='bx bx-group'></i>
                     </div>
-                </div>
-
-                <div class="L4gV9">
-                    <div class="F3nH5">Informations légales</div>
-                    <div class="Q8mT2">RNA : W771013053 | SIRET : 820 06 383 00019</div>
-                    <div class="Q8mT2">J.O. du 13/02/2016 - Annonce n°1846 - Page 112</div>
-                    <div class="Q8mT2">Département : 77 – Seine-et-Marne</div>
+                    <div>
+                        <h3>Citoyenneté</h3>
+                        <p>Renforcement de la participation citoyenne</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Projects Section -->
+        <section class="x7K9mN_projects">
+            <div class="x7K9mN_container">
+                <div class="x7K9mN_section-title x7K9mN_fade-in">
+                    <h2>Nos Projets en Détail</h2>
+                    <p>Six initiatives pour transformer des vies</p>
+                    <div class="x7K9mN_divider"></div>
+                </div>
+
+                <!-- Ajout des onglets de filtrage -->
+                <div class="x7K9mN_filter-tabs x7K9mN_fade-in">
+                    <button class="x7K9mN_filter-tab x7K9mN_active" data-filter="all">
+                        <i class='bx bx-grid-alt'></i>
+                        Tous les projets
+                        <span class="x7K9mN_tab-count">6</span>
+                    </button>
+                    <button class="x7K9mN_filter-tab" data-filter="en-cours">
+                        <i class='bx bx-loader-circle'></i>
+                        En cours
+                        <span class="x7K9mN_tab-count">4</span>
+                    </button>
+                    <button class="x7K9mN_filter-tab" data-filter="a-venir">
+                        <i class='bx bx-time'></i>
+                        À venir
+                        <span class="x7K9mN_tab-count">2</span>
+                    </button>
+                </div>
+
+                <!-- Catégorie Projets En Cours -->
+                <div class="x7K9mN_projects-category" data-category="en-cours">
+                    <div class="x7K9mN_category-header x7K9mN_fade-in">
+                        <div class="x7K9mN_category-icon x7K9mN_en-cours">
+                            <i class='bx bx-loader-circle'></i>
+                        </div>
+                        <div>
+                            <h3>Projets En Cours</h3>
+                            <span>4 projets actuellement en phase d'exécution</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 1 - En cours -->
+                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
+                        <div class="x7K9mN_card-header">
+                            <div class="x7K9mN_card-num">01</div>
+                            <h3>Projet de Travaux Dirigés en Mathématiques, Physique et Chimie pour la Classe de Troisième</h3>
+                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
+                                <i class='bx bx-loader-circle'></i>
+                                En cours
+                            </span>
+                        </div>
+                        <div class="x7K9mN_card-body">
+                            <p>Le Projet de Travaux Dirigés en Mathématiques, Physique et Chimie pour la classe de Troisième vise à préparer les élèves à réussir l'examen du BEPEC. Ce projet se concentre sur l'acquisition des compétences fondamentales dans ces matières scientifiques, en proposant des activités pratiques et des exercices adaptés au programme scolaire.</p>
+                            
+                            <div class="x7K9mN_objectives">
+                                <h4><i class='bx bx-target-lock'></i> Objectifs principaux</h4>
+                                <ul class="x7K9mN_obj-list">
+                                    <li>
+                                        <i class='bx bx-check-circle'></i>
+                                        <div><strong>Renforcement des connaissances :</strong> Les élèves approfondissent leur compréhension des concepts clés en mathématiques, physique et chimie.</div>
+                                    </li>
+                                    <li>
+                                        <i class='bx bx-check-circle'></i>
+                                        <div><strong>Méthodologie de travail :</strong> Des stratégies d'apprentissage sont enseignées pour aider les élèves à mieux organiser leur étude et à gérer leur temps.</div>
+                                    </li>
+                                    <li>
+                                        <i class='bx bx-check-circle'></i>
+                                        <div><strong>Évaluation continue :</strong> Des évaluations régulières permettent de suivre les progrès des élèves et d'ajuster les méthodes d'enseignement.</div>
+                                    </li>
+                                    <li>
+                                        <i class='bx bx-check-circle'></i>
+                                        <div><strong>Préparation à l'examen :</strong> Des simulations d'examen et des corrections détaillées aident les élèves à se familiariser avec le format de l'épreuve.</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="x7K9mN_card-tags">
+                                <span class="x7K9mN_tag">Éducation</span>
+                                <span class="x7K9mN_tag">BEPEC</span>
+                                <span class="x7K9mN_tag">Sciences</span>
+                            </div>
+
+                            <a href="#" class="x7K9mN_btn_soutenir_projet">
+                                <i class='bx bx-heart'></i>
+                                Soutenir ce projet
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 - En cours -->
+                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
+                        <div class="x7K9mN_card-header">
+                            <div class="x7K9mN_card-num">02</div>
+                            <h3>Projet d'aide à la prise en charge de personnes handicapées en France et au Bénin</h3>
+                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
+                                <i class='bx bx-loader-circle'></i>
+                                En cours
+                            </span>
+                        </div>
+                        <div class="x7K9mN_card-body">
+                            <p>Le projet d'aide à la prise en charge des personnes handicapées en France et au Bénin vise à améliorer la qualité de vie et l'intégration sociale des personnes en situation de handicap.</p>
+                            <p>En France, des initiatives sont mises en place pour garantir l'accès aux soins, à l'éducation et à l'emploi, tout en sensibilisant la population à la question du handicap. Au Bénin, le projet se concentre sur le renforcement des infrastructures, la formation de professionnels de santé et l'amélioration des services sociaux.</p>
+                            <p>L'objectif commun est de favoriser l'autonomie des personnes handicapées et de promouvoir leur inclusion dans la société, en tenant compte des spécificités culturelles et des besoins locaux. Ce projet représente un effort collaboratif pour créer un environnement plus inclusif et solidaire dans les deux pays.</p>
+
+                            <div class="x7K9mN_card-tags">
+                                <span class="x7K9mN_tag">Handicap</span>
+                                <span class="x7K9mN_tag">France</span>
+                                <span class="x7K9mN_tag">Bénin</span>
+                                <span class="x7K9mN_tag">Inclusion</span>
+                            </div>
+
+                            <a href="#" class="x7K9mN_btn_soutenir_projet">
+                                <i class='bx bx-heart'></i>
+                                Soutenir ce projet
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 - En cours -->
+                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
+                        <div class="x7K9mN_card-header">
+                            <div class="x7K9mN_card-num">03</div>
+                            <h3>Projet d'accompagnement pour le retour à l'éducation au Bénin</h3>
+                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
+                                <i class='bx bx-loader-circle'></i>
+                                En cours
+                            </span>
+                        </div>
+                        <div class="x7K9mN_card-body">
+                            <p>Le projet d'accompagnement pour le retour à l'éducation au Bénin vise à soutenir les enfants et les jeunes qui ont été éloignés de l'école, en raison de divers facteurs tels que la pauvreté, les conflits ou les crises sanitaires.</p>
+                            <p>Ce projet met en place des initiatives pour faciliter leur réintégration dans le système éducatif, en offrant des ressources pédagogiques, des formations pour les enseignants et un soutien psychosocial.</p>
+                            <p>L'objectif est de garantir un accès équitable à l'éducation pour tous, tout en renforçant la qualité de l'enseignement. En favorisant un environnement d'apprentissage inclusif, le projet aspire à améliorer les perspectives d'avenir des jeunes Béninois.</p>
+
+                            <div class="x7K9mN_card-tags">
+                                <span class="x7K9mN_tag">Éducation</span>
+                                <span class="x7K9mN_tag">Réinsertion</span>
+                                <span class="x7K9mN_tag">Bénin</span>
+                            </div>
+
+                            <a href="#" class="x7K9mN_btn_soutenir_projet">
+                                <i class='bx bx-heart'></i>
+                                Soutenir ce projet
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 - En cours -->
+                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
+                        <div class="x7K9mN_card-header">
+                            <div class="x7K9mN_card-num">04</div>
+                            <h3>Projet de contribution à la prise en charge des personnes handicapées mentales au Bénin</h3>
+                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
+                                <i class='bx bx-loader-circle'></i>
+                                En cours
+                            </span>
+                        </div>
+                        <div class="x7K9mN_card-body">
+                            <p>Le projet de contribution à la prise en charge des personnes handicapées mentales au Bénin vise à améliorer la qualité de vie et l'intégration sociale de ces individus.</p>
+                            <p>Il se concentre sur plusieurs axes, notamment la sensibilisation des communautés, la formation des professionnels de la santé et l'amélioration des infrastructures de soins. L'objectif est de promouvoir une approche inclusive qui respecte les droits des personnes handicapées mentales, tout en leur offrant un accès à des services adaptés et à un soutien psychologique.</p>
+                            <p>Ce projet cherche également à impliquer les familles et à renforcer les réseaux de solidarité pour favoriser l'autonomie et le bien-être des personnes concernées.</p>
+
+                            <div class="x7K9mN_card-tags">
+                                <span class="x7K9mN_tag">Santé mentale</span>
+                                <span class="x7K9mN_tag">Bénin</span>
+                                <span class="x7K9mN_tag">Accompagnement</span>
+                            </div>
+
+                            <a href="#" class="x7K9mN_btn_soutenir_projet">
+                                <i class='bx bx-heart'></i>
+                                Soutenir ce projet
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Catégorie Projets À Venir -->
+                <div class="x7K9mN_projects-category" data-category="a-venir">
+                    <div class="x7K9mN_category-header x7K9mN_fade-in">
+                        <div class="x7K9mN_category-icon x7K9mN_a-venir">
+                            <i class='bx bx-time'></i>
+                        </div>
+                        <div>
+                            <h3>Projets À Venir</h3>
+                            <span>2 projets en préparation pour 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 - À venir -->
+                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="a-venir">
+                        <div class="x7K9mN_card-header">
+                            <div class="x7K9mN_card-num x7K9mN_a-venir">05</div>
+                            <h3>Projet de centre de formation à la sécurité au travail</h3>
+                            <span class="x7K9mN_status-badge x7K9mN_a-venir">
+                                <i class='bx bx-time'></i>
+                                À venir
+                            </span>
+                        </div>
+                        <div class="x7K9mN_card-body">
+                            <p>Le projet de centre de formation à la sécurité au travail vise à promouvoir des pratiques sécuritaires dans divers métiers et secteurs d'activité.</p>
+                            <p>Ce centre propose des formations adaptées aux besoins des travailleurs, en mettant l'accent sur la prévention des risques professionnels, la gestion des situations d'urgence et le respect des normes de sécurité.</p>
+                            <p>L'objectif est de sensibiliser les employés et les employeurs à l'importance de la sécurité au travail, tout en leur fournissant les compétences nécessaires pour minimiser les accidents et améliorer les conditions de travail. En intégrant des modules spécifiques liés à différents métiers, le projet aspire à créer un environnement de travail plus sûr et à renforcer la culture de la sécurité au sein des entreprises.</p>
+
+                            <div class="x7K9mN_card-tags">
+                                <span class="x7K9mN_tag">Formation</span>
+                                <span class="x7K9mN_tag">Sécurité</span>
+                                <span class="x7K9mN_tag">Emploi</span>
+                            </div>
+
+                            <a href="#" class="x7K9mN_btn_soutenir_projet">
+                                <i class='bx bx-heart'></i>
+                                Soutenir ce projet
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 6 - À venir -->
+                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="a-venir">
+                        <div class="x7K9mN_card-header">
+                            <div class="x7K9mN_card-num x7K9mN_a-venir">06</div>
+                            <h3>Projet d'appropriation et vulgarisation du code électoral - Élections 2026</h3>
+                            <span class="x7K9mN_status-badge x7K9mN_a-venir">
+                                <i class='bx bx-time'></i>
+                                À venir
+                            </span>
+                        </div>
+                        <div class="x7K9mN_card-body">
+                            <p>Le projet d'appropriation et de vulgarisation du code électoral dans le cadre des élections générales de 2026 en République du Bénin vise à sensibiliser et informer la population sur les dispositions du code électoral.</p>
+                            <p>L'objectif principal est de garantir une meilleure compréhension des droits et des responsabilités des citoyens en matière de vote, ainsi que des procédures électorales.</p>
+                            <p>Ce projet inclut des campagnes de sensibilisation, des ateliers de formation et la distribution de supports d'information adaptés à différents publics. En favorisant une large diffusion des connaissances sur le code électoral, le projet aspire à renforcer la participation citoyenne, à promouvoir des élections transparentes et à contribuer à la consolidation de la démocratie au Bénin.</p>
+
+                            <div class="x7K9mN_card-tags">
+                                <span class="x7K9mN_tag">Démocratie</span>
+                                <span class="x7K9mN_tag">Élections 2026</span>
+                                <span class="x7K9mN_tag">Citoyenneté</span>
+                            </div>
+
+                            <a href="#" class="x7K9mN_btn_soutenir_projet">
+                                <i class='bx bx-heart'></i>
+                                Soutenir ce projet
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        
+
+        
     </div>
 
- 
+    <script>
+        (function() {
+            // Intersection Observer for fade-in animations
+            const q3R8vL_observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('x7K9mN_visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.x7K9mN_fade-in').forEach(el => {
+                q3R8vL_observer.observe(el);
+            });
+
+            // Counter animation
+            const p5T2wK_counters = document.querySelectorAll('.x7K9mN_stat-num');
+            const p5T2wK_counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        let current = 0;
+                        const increment = target / 30;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                entry.target.textContent = target;
+                                clearInterval(timer);
+                            } else {
+                                entry.target.textContent = Math.ceil(current);
+                            }
+                        }, 50);
+                        p5T2wK_counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            p5T2wK_counters.forEach(counter => {
+                p5T2wK_counterObserver.observe(counter);
+            });
+
+            const m8Z4xQ_filterTabs = document.querySelectorAll('.x7K9mN_filter-tab');
+            const m8Z4xQ_categories = document.querySelectorAll('.x7K9mN_projects-category');
+
+            m8Z4xQ_filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Update active tab
+                    m8Z4xQ_filterTabs.forEach(t => t.classList.remove('x7K9mN_active'));
+                    this.classList.add('x7K9mN_active');
+
+                    // Show/hide categories
+                    if (filter === 'all') {
+                        m8Z4xQ_categories.forEach(cat => {
+                            cat.classList.remove('x7K9mN_hidden');
+                        });
+                    } else {
+                        m8Z4xQ_categories.forEach(cat => {
+                            if (cat.getAttribute('data-category') === filter) {
+                                cat.classList.remove('x7K9mN_hidden');
+                            } else {
+                                cat.classList.add('x7K9mN_hidden');
+                            }
+                        });
+                    }
+
+                    // Re-observe fade-in elements for animation
+                    document.querySelectorAll('.x7K9mN_fade-in:not(.x7K9mN_visible)').forEach(el => {
+                        q3R8vL_observer.observe(el);
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

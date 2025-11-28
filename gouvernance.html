@@ -508,7 +508,7 @@
 
 
     <div class="page-wrapper">
-       <header class="main-header">
+      <header class="main-header">
             <div class="main-header__top">
                 <div class="main-header__top-wrapper">
                     <div class="main-header__top-inner">
@@ -541,9 +541,10 @@
                             </ul>
                         </div>
                         <div class="main-header__top-right main-header__social">
-                         <a href="https://www.tiktok.com/@ong_bei?lang=fr" class="fab fa-tiktok"></a>
+                            
+                                  <a href="https://www.tiktok.com/@ong_bei?lang=fr" class="fab fa-tiktok"></a>
                     <a href="https://web.facebook.com/profile.php?id=61583551407408" class="fab fa-facebook-square"></a>
-                    <a href="https://youtube.com/@ongbei?si=HBjC6bViM9pO3Bmv" class="fab fa-youtube"></a>
+                            <a href="https://youtube.com/@ongbei?si=HBjC6bViM9pO3Bmv" class="fab fa-youtube"></a>
                     <a href="https://www.instagram.com/ong.bei/" class="fab fa-instagram"></a>
                             
                             
@@ -575,8 +576,17 @@
                                                 <li><a href="motPR.html">Mot du président</a></li>
                                             </ul>
                                         </li>
-                                    <li><a href="causes.html">Nos actions</a></li>
-                                    <li><a href="blog.html">Actualités</a></li>
+                                        
+                                        <li><a href="blog.html">Actualités</a></li>
+                                    <li class="dropdown">
+                                            <a href="#">Nos Interventions
+</a>
+                                            <ul>
+                                                <li><a href="causes.html">Nos actions</a></li>
+                                                <li><a href="projet.html">Nos Projets</a></li>
+                                               
+                                            </ul>
+                                        </li>
                                     
                                     <li>
                                         <a href="contact.html">Contact</a>
@@ -597,6 +607,7 @@
                 </div>
             </nav>
         </header>
+        
         <div class="stricky-header stricked-menu main-menu">
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
@@ -712,13 +723,13 @@
                             <div class="nm7k3x">IDUMA-KUMBI Meganee Lucette</div>
                         </div>
                         <div class="tm8n4k">
-                            <div class="rk5m9p">Responsable technologie, information et communication</div>
+                            <div class="rk5m9p">Délégué chargé de la communication et de l’informatique</div>
                             <div class="nm7k3x">KAZANDI Franklin</div>
                         </div>
                     </div>
                     <div class="xp6k2n">
                         <div class="tm8n4k">
-                            <div class="rk5m9p">Conseiller juridique externe</div>
+                            <div class="rk5m9p">Conseiller juridique</div>
                             <div class="nm7k3x">AHEHEHINNOU Eric Marcel</div>
                         </div>
                         <div class="">
@@ -959,161 +970,190 @@
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
  <script>
-        const membres = [
-            {
-                nom: "AHOVISSI DJAKPO Prosper Elisée",
-                roles: ["Président fondateur"],
-                photo: "img/pr.jpg"
-            },
-            {
-                nom: "ASSOGBA Vignon Assoclé Joseph",
-                roles: ["Secrétaire Général National"],
-                photo: "img/assogba.jpg"
-            },
-            {
-                nom: "YAMADJAKO Jilius Sylvestre .G",
-                roles: ["Trésorier Général National"],
-                photo: "img/juluis.jpg"
-            },
-            {
-                nom: "DJIKPESSE Gladys",
-                roles: ["Première conseiller spéciale nationale"],
-                photo: "img/gladys.jpg"
-            },
-            {
-                nom: "ZINSOU BODE Charles George",
-                roles: ["Deuxième conseiller spécial National"],
-                photo: "img/gorges.jpg"
-            },
-            {
-                nom: "KOUKOUI Anani Yves",
-                roles: ["Troisième conseiller spécial National", "Responsable des communes de OUEME-PLATEAU", "Deuxième assistant social"],
-                photo: "img/yves.jpg"
-            },
-            {
-                nom: "KADJEGBIN Ranti Alexandrine",
-                roles: ["Trésorière générale adjointe National"],
-                photo: "img/ranti.jpg"
-            },
-            {
-                nom: "AHEHEHINNOU Eric . M",
-                roles: ["Conseillé juridique Principal"],
-                photo: ""
-            },
-            {
-                nom: "KADONOUGAN Damien",
-                roles: ["Conseiller juridique adjoint"],
-                photo: "img/damien.png"
-            },
-            {
-                nom: "DENASSOU Godonou Barthélémy.S",
-                roles: ["Secrétaire Générale adjoint National", "Représentant de l'ATLANTIQUE-LITTORAL"],
-                photo: ""
-            },
-            {
-                nom: "YOBODE Patrick Hervé",
-                roles: ["Délègue National", "Responsable des technologies, informations, communications National"],
-                photo: ""
-            },
-            {
-                nom: "AHEHEHINNOU Fallone S. A",
-                roles: ["Déléguée nationale adjointe", "Vérificateur des comptes"],
-                photo: ""
-            },
-            {
-                nom: "AKINDES ADENIY Edouard",
-                roles: ["Premier assistant sociale"],
-                photo: "img/Edouard.jpg"
-            },
-            {
-                nom: "APITHY D. Marius Gildas",
-                roles: ["Troisième assistant social"],
-                photo: ""
-            },
-            {
-                nom: "OGOUVI IBOUKOUN Denis",
-                roles: ["Responsable chargé des relations extérieur et intérieur"],
-                photo: ""
-            },
-            {
-                nom: "TOKPO Sidoine Philippe",
-                roles: ["Responsable chargé d'organisation National"],
-                photo: ""
-            },
-            {
-                nom: "GNAMMI DAMA Roma Romain",
-                roles: ["Responsable chargé des programmes, coordinateur des projets"],
-                photo: ""
-            },
-            {
-                nom: "TINVI DONALD Hermann",
-                roles: ["Responsable des technologies, informations, communications Adjoint National", "Responsable des communes ATLANTIQUE-LITTORAL"],
-                photo: ""
-            },
-            {
-                nom: "BALALE Paul",
-                roles: ["Représentant des départements BORGOU-ALIBORI"],
-                photo: ""
-            },
-            {
-                nom: "HOUNFODJI Mahougnon Barnabaie",
-                roles: ["Représentant des départements ATTACORA-DONGA"],
-                photo: ""
-            },
-            {
-                nom: "AHOVISSI DJAKPO Wilfrid",
-                roles: ["Représentant des départements MONO-COUFFO"],
-                photo: "img/Wilfrid.png"
-            },
-            {
-                nom: "DEBESSEH Kouassi",
-                roles: ["Représentant des départements OUEME-PLATEAU"],
-                photo: ""
-            },
-            {
-                nom: "ADOUKONOU A. Kossi Philippe",
-                roles: ["Représentant des départements ZOU-COLLINES"],
-                photo: ""
-            },
-            {
-                nom: "DENASSOU Godonou Barthélémy",
-                roles: ["Représentant des départements ATLANTIQUE-LITTORAL"],
-                photo: ""
-            }
-        ];
+    const membres = [
+    // 1. Président fondateur
+    {
+        nom: "AHOVISSI DJAKPO Prosper Elisée",
+        roles: ["Président fondateur"],
+        photo: "img/pr.jpg"
+    },
+
+    // 2. Secrétaire Général National
+    {
+        nom: "ASSOGBA Vignon Assoclé Joseph",
+        roles: ["Secrétaire Général National"],
+        photo: "img/assogba.jpg"
+    },
+
+    // 3. Trésorier Général National
+    {
+        nom: "YAMADJAKO Jilius Sylvestre .G",
+        roles: ["Trésorier Général National"],
+        photo: "img/juluis.jpg"
+    },
+
+    // 4. Conseillers spéciaux
+    {
+        nom: "DJIKPESSE Gladys",
+        roles: ["Première conseiller spéciale nationale"],
+        photo: "img/gladys.jpg"
+    },
+    {
+        nom: "ZINSOU BODE Charles George",
+        roles: ["Deuxième conseiller spécial National"],
+        photo: "img/gorges.jpg"
+    },
+    {
+        nom: "KOUKOUI Anani Yves",
+        roles: ["Troisième conseiller spécial National", "Responsable des communes de OUEME-PLATEAU", "Deuxième assistant social"],
+        photo: "img/yves.jpg"
+    },
+
+    // 5. Assistants sociaux
+    {
+        nom: "AKINDES ADENIY Édouard",
+        roles: ["Premier assistant sociale"],
+        photo: "img/Edouard.jpg"
+    },
+    {
+        nom: "APITHY D. Marius Gildas",
+        roles: ["Troisième assistant social"],
+        photo: ""
+    },
+
+    // 6. Responsables de l’organisation nationale
+    {
+        nom: "HINNOUHO Benjamin dossou",
+        roles: ["Premier responsable chargé de l’organisation nationale"],
+        photo: "img/Benjamin.jpg"
+    },
+    {
+        nom: "TOKPO Sidoine Philippe",
+        roles: ["Deuxième responsable chargé de l’organisation nationale"],
+        photo: ""
+    },
+    {
+        nom: "TINVI DONALD Hermann",
+        roles: ["Adjoint National", "Responsable des communes ATLANTIQUE-LITTORAL"],
+        photo: "img/Donald.png"
+    },
+
+    // 7. Délégués / Adjoints nationaux
+    {
+        nom: "YOBODE Patrick Hervé",
+        roles: ["Délégué National"],
+        photo: "img/Patrick.jpg"
+    },
+    {
+        nom: "AHOUANDJINOU G. Renaud",
+        roles: ["Délégué national adjoint du Bénin", "Responsable chargé des programmes, coordinateur des projets"],
+        photo: "img/renaud.png"
+    },
+
+    // 8. Responsables TIC / Relations extérieures
+    {
+        nom: "GBAYE Olatoundji Charbel José",
+        roles: ["Responsable chargé des technologies de l'information et de la communication (TIC)"],
+        photo: "img/José.png"
+    },
+    {
+        nom: "GBAYE Raymond",
+        roles: ["Responsable chargé des relations extérieures et intérieures"],
+        photo: "img/Raymond.png"
+    },
+
+    // 9. Juridique / Vérificateurs
+    {
+        nom: "AHEHEHINNOU Eric . M",
+        roles: ["Conseillé juridique Principal"],
+        photo: "img/Eric.jpg"
+    },
+    {
+        nom: "KADONOUGAN Damien",
+        roles: ["Conseiller juridique adjoint"],
+        photo: "img/damien.png"
+    },
+    {
+        nom: "AHEHEHINNOU Fallone S. A",
+        roles: ["Vérificateur des comptes"],
+        photo: ""
+    },
+
+    // 10. Secrétaires adjoints / Trésoriers adjoints
+    {
+        nom: "DENASSOU Godonou Barthélémy.S",
+        roles: ["Secrétaire Générale adjoint National", "Représentant de l'ATLANTIQUE-LITTORAL"],
+        photo: "img/Barthélémy.png"
+    },
+    {
+        nom: "KADJEGBIN Ranti Alexandrine",
+        roles: ["Trésorière générale adjointe National"],
+        photo: "img/ranti.jpg"
+    },
+
+    // 11. Représentants des départements
+    {
+        nom: "BALALÈ Ilo Paul",
+        roles: ["Représentant des départements BORGOU-ALIBORI"],
+        photo: "img/Paul.jpg"
+    },
+    {
+        nom: "HOUNFODJI Mahougnon Barnabé",
+        roles: ["Représentant des départements ATTACORA-DONGA"],
+        photo: "img/Mahougnon.jpg"
+    },
+    {
+        nom: "AHOVISSI DJAKPO Wilfrid",
+        roles: ["Représentant des départements MONO-COUFFO"],
+        photo: "img/Wilfrid.png"
+    },
+    {
+        nom: "DEBESSEH Kouassi",
+        roles: ["Représentant des départements OUEME-PLATEAU"],
+        photo: ""
+    },
+    {
+        nom: "ADOUKONOU A. Kossi Philippe",
+        roles: ["Représentant des départements ZOU-COLLINES"],
+        photo: ""
+    }
+];
+
 
 
         const membresFrance = [
+    // Président & Vice-Président
     {
-         nom: "AHOVISSI DJAKPO Prosper Elisée",
-                roles: ["Président fondateur"],
-                photo: "img/pr.jpg"
+        nom: "AHOVISSI DJAKPO Prosper Elisée",
+        roles: ["Président fondateur"],
+        photo: "img/pr.jpg"
     },
     {
         nom: "BOUNDA MAKEMBE J. LUCIEN",
         roles: ["Vice-Président"],
         photo: ""
     },
+
+    // Secrétaire général
     {
         nom: "GOLBAC EMMANUELLA",
         roles: ["Secrétaire Générale"],
         photo: "img/emanuella.jpg"
     },
+
+    // Trésorier général & adjoint
     {
         nom: "SEDJRO ZINSOU Nadia Ida",
         roles: ["Trésorière Générale"],
         photo: "img/Nadia.jpg"
     },
     {
-        nom: "AHEHEHINNOU Eric M. (Docteur)",
-        roles: ["Conseiller juridique Principal"],
-        photo: ""
+        nom: "POLYPHEME Luce Véronique",
+        roles: ["Trésorière nationale adjointe"],
+        photo: "img/luce.jpg"
     },
-    {
-        nom: "KADONOUGAN Damien",
-        roles: [" Conseiller juridique Adjoint"],
-        photo: "img/damien.png"
-    },
+
+    // Conseillers spéciaux
     {
         nom: "SIFRAN Gérard",
         roles: ["Premier conseiller spécial"],
@@ -1124,20 +1164,24 @@
         roles: ["Deuxième conseiller spécial"],
         photo: "img/gladys.jpg"
     },
+
+    // Conseillers juridiques
     {
-        nom: "POLYPHEME Luce Véronique",
-        roles: ["Trésorière nationale adjointe"],
-        photo: "img/luce.jpg"
+        nom: "AHEHEHINNOU Eric M.",
+        roles: ["Conseiller juridique Principal"],
+        photo: "img/Eric.jpg"
     },
     {
-        nom: "ALATADE Faustin",
-        roles: ["Délégué National"],
-        photo: "img/faustin.jpg"
+        nom: "KADONOUGAN Damien",
+        roles: ["Conseiller juridique Adjoint"],
+        photo: "img/damien.png"
     },
+
+    // Responsables TIC / Communication / Relation publique
     {
-        nom: "TSHITOKO-NDAYE Nicole",
-        roles: ["Trésorière régionale"],
-        photo: "img/nicole.jpg"
+        nom: "GBAYE Olatoundji Charbel José",
+        roles: ["Responsable chargé des technologies de l'information et de la communication (TIC)"],
+        photo: "img/José.png"
     },
     {
         nom: "FRANKLIN KAZADI KANDA",
@@ -1148,8 +1192,21 @@
         nom: "Lucie Catalan",
         roles: ["Déléguée chargée de la relation publique"],
         photo: "img/CATALAN.jpg"
+    },
+
+    // Délégués nationaux et régionaux
+    {
+        nom: "ALATADE Faustin",
+        roles: ["Délégué National"],
+        photo: "img/faustin.jpg"
+    },
+    {
+        nom: "TSHITOKO-NDAYE Nicole",
+        roles: ["Trésorière régionale"],
+        photo: "img/nicole.jpg"
     }
 ];
+
 
 let xm4k7nFr = 0;
 let bn8p2xFr = null;
