@@ -182,9 +182,9 @@
             border-radius: 2px;
         }
 
-        .x7K9mN_projects {
-            padding: 0px 60px 0 80px;
-        }
+       .x7K9mN_projects {
+    padding: 0px 20px 0 20px;  /* CHANGER : réduire le padding */
+}
 
         /* Ajout des styles pour les onglets de filtrage (En cours / À venir) */
         .x7K9mN_filter-tabs {
@@ -649,60 +649,114 @@
         }
 
         @media (max-width: 768px) {
-            .x7K9mN_hero {
-                padding: 60px 20px;
-            }
+    .x7K9mN_hero {
+        padding: 60px 20px;
+    }
 
-            .x7K9mN_intro {
-                padding: 28px;
-                margin: -40px 15px 50px;
-            }
+    .x7K9mN_intro {
+        padding: 28px 20px;  /* AJOUT : réduire padding horizontal */
+        margin: -40px 15px 50px;
+    }
 
-            .x7K9mN_card-header {
-                padding: 22px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 14px;
-            }
+    .x7K9mN_intro-grid {
+        grid-template-columns: 1fr;  /* AJOUT : une colonne en mobile */
+    }
 
-            .x7K9mN_status-badge {
-                margin-left: 0;
-            }
+    .x7K9mN_projects {
+        padding: 0px 15px;  /* AJOUT : réduire le padding */
+    }
 
-            .x7K9mN_card-body {
-                padding: 22px;
-            }
+    .x7K9mN_card-header {
+        padding: 20px 15px;  /* CHANGER : réduire padding */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
 
-            .x7K9mN_objectives {
-                padding: 18px;
-            }
+    .x7K9mN_card-header h3 {
+        font-size: 16px;  /* AJOUT : réduire taille texte */
+        line-height: 1.4;
+    }
 
-            .x7K9mN_summary-grid {
-                grid-template-columns: 1fr;
-            }
+    .x7K9mN_status-badge {
+        margin-left: 0;
+    }
 
-            .x7K9mN_stats {
-                gap: 30px;
-            }
+    .x7K9mN_card-body {
+        padding: 20px 15px;  /* CHANGER : réduire padding */
+    }
 
-            .x7K9mN_btn_soutenir_projet {
-                width: 100%;
-                padding: 14px 24px;
-            }
-            .x7K9mN_btn_participer_projet {
-                width: 100%;
-                padding: 14px 24px;
-            }
+    .x7K9mN_card-body p {
+        font-size: 14px;  /* AJOUT : réduire taille texte */
+    }
 
-            .x7K9mN_filter-tabs {
-                gap: 8px;
-            }
+    .x7K9mN_objectives {
+        padding: 18px 15px;  /* CHANGER : réduire padding */
+    }
 
-            .x7K9mN_filter-tab {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-        }
+    .x7K9mN_obj-list li {
+        font-size: 13px;  /* AJOUT : réduire taille texte */
+    }
+
+    .x7K9mN_summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .x7K9mN_stats {
+        gap: 30px;
+    }
+
+    .x7K9mN_btn_soutenir_projet,
+    .x7K9mN_btn_participer_projet {
+        width: 100%;
+        padding: 14px 24px;
+    }
+
+    .x7K9mN_filter-tabs {
+        gap: 8px;
+        padding: 0 10px;  /* AJOUT : padding pour les onglets */
+    }
+
+    .x7K9mN_filter-tab {
+        padding: 10px 18px;  /* CHANGER : réduire padding */
+        font-size: 13px;
+    }
+
+    .x7K9mN_category-header {
+        flex-direction: column;  /* AJOUT : empiler en mobile */
+        align-items: flex-start;
+    }
+
+    .x7K9mN_category-header h3 {
+        font-size: 18px;  /* AJOUT : réduire taille */
+    }
+}
+
+
+@media (max-width: 480px) {
+    .x7K9mN_intro-grid {
+        gap: 20px;
+    }
+
+    .x7K9mN_filter-tab .x7K9mN_tab-count {
+        display: none;  /* Masquer les compteurs sur très petits écrans */
+    }
+
+    .x7K9mN_card-num {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .x7K9mN_card-tags {
+        gap: 6px;
+    }
+
+    .x7K9mN_tag {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+}
 
         .x7K9mN_fade-in {
             opacity: 0;
