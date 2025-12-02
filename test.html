@@ -1,1015 +1,604 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités et Projets - Bien-Être International</title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .x7K9mN_wrapper {
-            font-family: 'Inter', sans-serif;
-            background: #f8f9fa;
-            color: #2d3748;
-            line-height: 1.7;
-        }
-
-        .x7K9mN_hero {
-            background: linear-gradient(135deg, #1a5f4a 0%, #2d8a6e 100%);
-            padding: 80px 20px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .x7K9mN_hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.15);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-        }
-
-        .x7K9mN_hero h1 {
-            font-size: clamp(28px, 5vw, 42px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .x7K9mN_hero-sub {
-            font-size: 17px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .x7K9mN_container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .x7K9mN_intro {
-            background: #fff;
-            border-radius: 16px;
-            padding: 40px;
-            margin: -50px 20px 60px;
-            position: relative;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .x7K9mN_intro-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .x7K9mN_intro-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .x7K9mN_intro-icon {
-            width: 48px;
-            height: 48px;
-            background: #e8f5f0;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .x7K9mN_intro-icon i {
-            font-size: 22px;
-            color: #1a5f4a;
-        }
-
-        .x7K9mN_intro-item h3 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: #1a202c;
-        }
-
-        .x7K9mN_intro-item p {
-            font-size: 13px;
-            color: #718096;
-        }
-
-        .x7K9mN_section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .x7K9mN_section-title h2 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 12px;
-        }
-
-        .x7K9mN_section-title p {
-            color: #718096;
-            font-size: 16px;
-        }
-
-        .x7K9mN_divider {
-            width: 60px;
-            height: 4px;
-            background: #1a5f4a;
-            margin: 16px auto 0;
-            border-radius: 2px;
-        }
-
-        .x7K9mN_projects {
-            padding: 60px 0 80px;
-        }
-
-        /* Ajout des styles pour les onglets de filtrage (En cours / À venir) */
-        .x7K9mN_filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .x7K9mN_filter-tab {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid #e2e8f0;
-            background: #fff;
-            color: #4a5568;
-        }
-
-        .x7K9mN_filter-tab:hover {
-            border-color: #1a5f4a;
-            color: #1a5f4a;
-        }
-
-        .x7K9mN_filter-tab.x7K9mN_active {
-            background: #1a5f4a;
-            border-color: #1a5f4a;
-            color: #fff;
-        }
-
-        .x7K9mN_filter-tab i {
-            font-size: 18px;
-        }
-
-        .x7K9mN_filter-tab .x7K9mN_tab-count {
-            background: rgba(0,0,0,0.1);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .x7K9mN_filter-tab.x7K9mN_active .x7K9mN_tab-count {
-            background: rgba(255,255,255,0.25);
-        }
-
-        /* Styles pour le titre de catégorie */
-        .x7K9mN_category-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 30px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .x7K9mN_category-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .x7K9mN_category-icon i {
-            font-size: 22px;
-            color: #fff;
-        }
-
-        .x7K9mN_category-icon.x7K9mN_en-cours {
-            background: #1a5f4a;
-        }
-
-        .x7K9mN_category-icon.x7K9mN_a-venir {
-            background: #e67e22;
-        }
-
-        .x7K9mN_category-header h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a202c;
-        }
-
-        .x7K9mN_category-header span {
-            font-size: 14px;
-            color: #718096;
-            font-weight: 400;
-        }
-
-        .x7K9mN_projects-category {
-            margin-bottom: 50px;
-        }
-
-        .x7K9mN_projects-category.x7K9mN_hidden {
-            display: none;
-        }
-        /* Fin styles catégories */
-
-        .x7K9mN_project-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .x7K9mN_project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
-        }
-
-        .x7K9mN_card-header {
-            padding: 28px 30px;
-            border-bottom: 1px solid #edf2f7;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .x7K9mN_card-num {
-            width: 50px;
-            height: 50px;
-            background: #1a5f4a;
-            color: #fff;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        /* Numéro orange pour projets à venir */
-        .x7K9mN_card-num.x7K9mN_a-venir {
-            background: #e67e22;
-        }
-
-        .x7K9mN_card-header h3 {
-            font-size: 17px;
-            font-weight: 600;
-            color: #1a202c;
-            line-height: 1.5;
-        }
-
-        /* Badge de statut sur la carte */
-        .x7K9mN_status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-left: auto;
-            flex-shrink: 0;
-        }
-
-        .x7K9mN_status-badge.x7K9mN_en-cours {
-            background: #e8f5f0;
-            color: #1a5f4a;
-        }
-
-        .x7K9mN_status-badge.x7K9mN_a-venir {
-            background: #fef3e6;
-            color: #e67e22;
-        }
-
-        .x7K9mN_status-badge i {
-            font-size: 12px;
-        }
-
-        .x7K9mN_card-body {
-            padding: 28px 30px;
-        }
-
-        .x7K9mN_card-body p {
-            color: #4a5568;
-            font-size: 15px;
-            margin-bottom: 16px;
-        }
-
-        .x7K9mN_card-body p:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .x7K9mN_objectives {
-            background: #f7fafc;
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 20px;
-        }
-
-        .x7K9mN_objectives h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1a5f4a;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .x7K9mN_obj-list {
-            list-style: none;
-        }
-
-        .x7K9mN_obj-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 14px;
-            color: #4a5568;
-        }
-
-        .x7K9mN_obj-list li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .x7K9mN_obj-list li i {
-            color: #1a5f4a;
-            font-size: 18px;
-            margin-top: 2px;
-        }
-
-        .x7K9mN_obj-list strong {
-            color: #2d3748;
-        }
-
-        .x7K9mN_card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #edf2f7;
-        }
-
-        .x7K9mN_tag {
-            background: #e8f5f0;
-            color: #1a5f4a;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        /* ========================================
-           STYLE BOUTON SOUTENIR CE PROJET - DEBUT
-           ======================================== */
-        .x7K9mN_btn_soutenir_projet {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #c0392b;
-            color: #ffffff;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            margin-top: 24px;
-            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        }
-
-        .x7K9mN_btn_soutenir_projet:hover {
-            background: #a93226;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.35);
-        }
-
-        .x7K9mN_btn_soutenir_projet:active {
-            transform: translateY(0);
-        }
-
-        .x7K9mN_btn_soutenir_projet i {
-            font-size: 18px;
-        }
-        /* ========================================
-           STYLE BOUTON SOUTENIR CE PROJET - FIN
-           ======================================== */
-
-        .x7K9mN_summary {
-            background: linear-gradient(135deg, #1a5f4a 0%, #2d8a6e 100%);
-            padding: 70px 20px;
-            color: #fff;
-        }
-
-        .x7K9mN_summary-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .x7K9mN_summary h2 {
-            font-size: clamp(22px, 4vw, 28px);
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .x7K9mN_summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .x7K9mN_summary-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 14px;
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: background 0.3s ease;
-        }
-
-        .x7K9mN_summary-card:hover {
-            background: rgba(255,255,255,0.15);
-        }
-
-        .x7K9mN_summary-card-head {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-        .x7K9mN_summary-num {
-            width: 36px;
-            height: 36px;
-            background: #fff;
-            color: #1a5f4a;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .x7K9mN_summary-card h4 {
-            font-size: 15px;
-            font-weight: 600;
-            flex: 1;
-            line-height: 1.4;
-        }
-
-        .x7K9mN_summary-card p {
-            font-size: 14px;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .x7K9mN_conclusion {
-            padding: 70px 20px;
-            text-align: center;
-            background: #fff;
-        }
-
-        .x7K9mN_conclusion-inner {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .x7K9mN_conclusion-icon {
-            width: 70px;
-            height: 70px;
-            background: #e8f5f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-
-        .x7K9mN_conclusion-icon i {
-            font-size: 32px;
-            color: #1a5f4a;
-        }
-
-        .x7K9mN_conclusion h2 {
-            font-size: clamp(20px, 4vw, 26px);
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 20px;
-        }
-
-        .x7K9mN_conclusion p {
-            color: #4a5568;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .x7K9mN_stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .x7K9mN_stat-item {
-            text-align: center;
-        }
-
-        .x7K9mN_stat-num {
-            font-size: 36px;
-            font-weight: 700;
-            color: #1a5f4a;
-        }
-
-        .x7K9mN_stat-label {
-            font-size: 14px;
-            color: #718096;
-            margin-top: 4px;
-        }
-
-        @media (max-width: 768px) {
-            .x7K9mN_hero {
-                padding: 60px 20px;
-            }
-
-            .x7K9mN_intro {
-                padding: 28px;
-                margin: -40px 15px 50px;
-            }
-
-            .x7K9mN_card-header {
-                padding: 22px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 14px;
-            }
-
-            .x7K9mN_status-badge {
-                margin-left: 0;
-            }
-
-            .x7K9mN_card-body {
-                padding: 22px;
-            }
-
-            .x7K9mN_objectives {
-                padding: 18px;
-            }
-
-            .x7K9mN_summary-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .x7K9mN_stats {
-                gap: 30px;
-            }
-
-            .x7K9mN_btn_soutenir_projet {
-                width: 100%;
-                padding: 14px 24px;
-            }
-
-            .x7K9mN_filter-tabs {
-                gap: 8px;
-            }
-
-            .x7K9mN_filter-tab {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-        }
-
-        .x7K9mN_fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .x7K9mN_fade-in.x7K9mN_visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup BEI Digital Services</title>
+  <!-- Boxicons CDN -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    /* POPUP PROJET - STYLES PREMIUM */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+
+
+
+ 
+
+    /* Overlay */
+    .qW3vR8_overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 15, 15, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 99998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .qW3vR8_overlay.qW3vR8_visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Modal */
+    .qW3vR8_modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(30px);
+      z-index: 99999;
+      width: 94%;
+      max-width: 480px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .qW3vR8_modal.qW3vR8_visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
+    /* Carte */
+    .qW3vR8_card {
+      background: #faf8f5;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 
+        0 50px 100px -20px rgba(0, 0, 0, 0.5),
+        0 30px 60px -30px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .qW3vR8_card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1a5f4a, #c9a962, #1a5f4a);
+      z-index: 1;
+    }
+
+    /* Bouton fermer */
+    .qW3vR8_close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .qW3vR8_close:hover {
+      background: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .qW3vR8_close i {
+      font-size: 22px;
+      color: #1c1c1c;
+      transition: transform 0.3s ease;
+    }
+
+    .qW3vR8_close:hover i {
+      transform: rotate(90deg);
+    }
+
+    /* Section visuelle */
+    .qW3vR8_visual {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .qW3vR8_image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 6s ease;
+    }
+
+    .qW3vR8_modal.qW3vR8_visible .qW3vR8_image {
+      transform: scale(1.05);
+    }
+
+    .qW3vR8_visual::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Badge statut */
+    .qW3vR8_status {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #c9a962;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+
+    .qW3vR8_status i {
+      font-size: 14px;
+      animation: qW3vR8_rotate 2s linear infinite;
+    }
+
+    @keyframes qW3vR8_rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Titre */
+    .qW3vR8_image_title {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      z-index: 2;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Corps */
+    .qW3vR8_body {
+      padding: 28px 28px 24px;
+    }
+
+    /* Organisation */
+    .qW3vR8_org {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .qW3vR8_org_icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #1a5f4a, #238565);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .qW3vR8_org_icon i {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .qW3vR8_org_name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b6b6b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Description */
+    .qW3vR8_desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+    }
+
+    .qW3vR8_highlight {
+      color: #1a5f4a;
+      font-weight: 600;
+    }
+
+    /* Services grid */
+    .qW3vR8_services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .qW3vR8_service_item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .qW3vR8_service_item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .qW3vR8_service_item i {
+      color: #c9a962;
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .qW3vR8_service_text {
+      font-size: 13px;
+      font-weight: 500;
+      color: #4a4a4a;
+      line-height: 1.4;
+    }
+
+    /* Stats */
+    .qW3vR8_stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(26, 95, 74, 0.1);
+    }
+
+    .qW3vR8_stat {
+      flex: 1;
+      text-align: center;
+    }
+
+    .qW3vR8_stat_icon {
+      font-size: 24px;
+      color: #1a5f4a;
+      margin-bottom: 4px;
+    }
+
+    .qW3vR8_stat_label {
+      font-size: 11px;
+      color: #6b6b6b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      font-weight: 600;
+    }
+
+    /* Bouton CTA */
+    .qW3vR8_btn_devis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 28px;
+      background: #c9a962;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .qW3vR8_btn_devis::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .qW3vR8_btn_devis:hover {
+      background: #b89952;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 98, 0.4);
+    }
+
+    .qW3vR8_btn_devis:hover::before {
+      left: 100%;
+    }
+
+    .qW3vR8_btn_devis i {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .qW3vR8_btn_devis:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Timer */
+    .qW3vR8_timer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: #c9a962;
+      width: 100%;
+      transform-origin: left;
+      z-index: 1;
+    }
+
+    .qW3vR8_timer.qW3vR8_running {
+      animation: qW3vR8_shrink 12s linear forwards;
+    }
+
+    .qW3vR8_timer.qW3vR8_paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes qW3vR8_shrink {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .qW3vR8_modal {
+        width: 92%;
+        max-width: none;
+      }
+
+      .qW3vR8_card {
+        border-radius: 16px;
+      }
+
+      .qW3vR8_visual {
+        aspect-ratio: 16 / 11;
+      }
+
+      .qW3vR8_image_title {
+        font-size: 19px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .qW3vR8_body {
+        padding: 24px 20px 20px;
+      }
+
+      .qW3vR8_desc {
+        font-size: 14px;
+      }
+
+      .qW3vR8_services {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .qW3vR8_stats {
+        gap: 12px;
+      }
+
+      .qW3vR8_btn_devis {
+        padding: 14px 24px;
+        font-size: 13px;
+      }
+
+      .qW3vR8_close {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .qW3vR8_image_title {
+        font-size: 17px;
+      }
+
+      .qW3vR8_service_item {
+        padding: 10px;
+      }
+
+      .qW3vR8_service_text {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="x7K9mN_wrapper">
-        <!-- Hero Section -->
-        <section class="x7K9mN_hero">
-            <div class="x7K9mN_hero-badge">
-                <i class='bx bx-calendar'></i>
-                <span>Période 2025 - 2026</span>
-            </div>
-            <h1>Actualités et Projets</h1>
-            <p class="x7K9mN_hero-sub">Découvrez les six projets significatifs de BIEN-ÊTRE INTERNATIONAL pour un impact durable</p>
-        </section>
+  <!-- Overlay -->
+  <div class="qW3vR8_overlay" id="qW3vR8_overlay"></div>
 
-        <!-- Intro Stats -->
-        <div class="x7K9mN_intro x7K9mN_fade-in">
-            <div class="x7K9mN_intro-grid">
-                <div class="x7K9mN_intro-item">
-                    <div class="x7K9mN_intro-icon">
-                        <i class='bx bx-book-reader'></i>
-                    </div>
-                    <div>
-                        <h3>Éducation</h3>
-                        <p>Soutien scolaire et accompagnement pédagogique</p>
-                    </div>
-                </div>
-                <div class="x7K9mN_intro-item">
-                    <div class="x7K9mN_intro-icon">
-                        <i class='bx bx-heart'></i>
-                    </div>
-                    <div>
-                        <h3>Inclusion Sociale</h3>
-                        <p>Prise en charge des personnes handicapées</p>
-                    </div>
-                </div>
-                <div class="x7K9mN_intro-item">
-                    <div class="x7K9mN_intro-icon">
-                        <i class='bx bx-group'></i>
-                    </div>
-                    <div>
-                        <h3>Citoyenneté</h3>
-                        <p>Renforcement de la participation citoyenne</p>
-                    </div>
-                </div>
-            </div>
+  <!-- Modal -->
+  <div class="qW3vR8_modal" id="qW3vR8_modal">
+    <div class="qW3vR8_card">
+      <!-- Timer -->
+      <div class="qW3vR8_timer" id="qW3vR8_timer"></div>
+
+      <!-- Bouton fermer -->
+      <button class="qW3vR8_close" id="qW3vR8_close" aria-label="Fermer">
+        <i class='bx bx-x'></i>
+      </button>
+
+      <!-- Section visuelle -->
+      <div class="qW3vR8_visual">
+        <img 
+          src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" 
+          alt="BEI Digital Services" 
+          class="qW3vR8_image"
+        >
+        <span class="qW3vR8_status">
+          <i class='bx bx-loader-circle'></i>
+          En cours
+        </span>
+        <h2 class="qW3vR8_image_title">Votre Transformation Numérique à Prix Solidaires</h2>
+      </div>
+
+      <!-- Contenu -->
+      <div class="qW3vR8_body">
+        <!-- Organisation -->
+        <div class="qW3vR8_org">
+          <div class="qW3vR8_org_icon">
+            <i class='bx bx-palette'></i>
+          </div>
+          <span class="qW3vR8_org_name">Bien-Être International</span>
         </div>
 
-        <!-- Projects Section -->
-        <section class="x7K9mN_projects">
-            <div class="x7K9mN_container">
-                <div class="x7K9mN_section-title x7K9mN_fade-in">
-                    <h2>Nos Projets en Détail</h2>
-                    <p>Six initiatives pour transformer des vies</p>
-                    <div class="x7K9mN_divider"></div>
-                </div>
+        <!-- Description -->
+        <p class="qW3vR8_desc">
+          Des <span class="qW3vR8_highlight">créations digitales professionnelles</span> à tarifs solidaires : sites web, logos, identité visuelle et supports publicitaires. L'excellence accessible à tous.
+        </p>
 
-                <!-- Ajout des onglets de filtrage -->
-                <div class="x7K9mN_filter-tabs x7K9mN_fade-in">
-                    <button class="x7K9mN_filter-tab x7K9mN_active" data-filter="all">
-                        <i class='bx bx-grid-alt'></i>
-                        Tous les projets
-                        <span class="x7K9mN_tab-count">6</span>
-                    </button>
-                    <button class="x7K9mN_filter-tab" data-filter="en-cours">
-                        <i class='bx bx-loader-circle'></i>
-                        En cours
-                        <span class="x7K9mN_tab-count">4</span>
-                    </button>
-                    <button class="x7K9mN_filter-tab" data-filter="a-venir">
-                        <i class='bx bx-time'></i>
-                        À venir
-                        <span class="x7K9mN_tab-count">2</span>
-                    </button>
-                </div>
+       
 
-                <!-- Catégorie Projets En Cours -->
-                <div class="x7K9mN_projects-category" data-category="en-cours">
-                    <div class="x7K9mN_category-header x7K9mN_fade-in">
-                        <div class="x7K9mN_category-icon x7K9mN_en-cours">
-                            <i class='bx bx-loader-circle'></i>
-                        </div>
-                        <div>
-                            <h3>Projets En Cours</h3>
-                            <span>4 projets actuellement en phase d'exécution</span>
-                        </div>
-                    </div>
+       
 
-                    <!-- Project 1 - En cours -->
-                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
-                        <div class="x7K9mN_card-header">
-                            <div class="x7K9mN_card-num">01</div>
-                            <h3>Projet de Travaux Dirigés en Mathématiques, Physique et Chimie pour la Classe de Troisième</h3>
-                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
-                                <i class='bx bx-loader-circle'></i>
-                                En cours
-                            </span>
-                        </div>
-                        <div class="x7K9mN_card-body">
-                            <p>Le Projet de Travaux Dirigés en Mathématiques, Physique et Chimie pour la classe de Troisième vise à préparer les élèves à réussir l'examen du BEPEC. Ce projet se concentre sur l'acquisition des compétences fondamentales dans ces matières scientifiques, en proposant des activités pratiques et des exercices adaptés au programme scolaire.</p>
-                            
-                            <div class="x7K9mN_objectives">
-                                <h4><i class='bx bx-target-lock'></i> Objectifs principaux</h4>
-                                <ul class="x7K9mN_obj-list">
-                                    <li>
-                                        <i class='bx bx-check-circle'></i>
-                                        <div><strong>Renforcement des connaissances :</strong> Les élèves approfondissent leur compréhension des concepts clés en mathématiques, physique et chimie.</div>
-                                    </li>
-                                    <li>
-                                        <i class='bx bx-check-circle'></i>
-                                        <div><strong>Méthodologie de travail :</strong> Des stratégies d'apprentissage sont enseignées pour aider les élèves à mieux organiser leur étude et à gérer leur temps.</div>
-                                    </li>
-                                    <li>
-                                        <i class='bx bx-check-circle'></i>
-                                        <div><strong>Évaluation continue :</strong> Des évaluations régulières permettent de suivre les progrès des élèves et d'ajuster les méthodes d'enseignement.</div>
-                                    </li>
-                                    <li>
-                                        <i class='bx bx-check-circle'></i>
-                                        <div><strong>Préparation à l'examen :</strong> Des simulations d'examen et des corrections détaillées aident les élèves à se familiariser avec le format de l'épreuve.</div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="x7K9mN_card-tags">
-                                <span class="x7K9mN_tag">Éducation</span>
-                                <span class="x7K9mN_tag">BEPEC</span>
-                                <span class="x7K9mN_tag">Sciences</span>
-                            </div>
-
-                            <a href="#" class="x7K9mN_btn_soutenir_projet">
-                                <i class='bx bx-heart'></i>
-                                Soutenir ce projet
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project 2 - En cours -->
-                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
-                        <div class="x7K9mN_card-header">
-                            <div class="x7K9mN_card-num">02</div>
-                            <h3>Projet d'aide à la prise en charge de personnes handicapées en France et au Bénin</h3>
-                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
-                                <i class='bx bx-loader-circle'></i>
-                                En cours
-                            </span>
-                        </div>
-                        <div class="x7K9mN_card-body">
-                            <p>Le projet d'aide à la prise en charge des personnes handicapées en France et au Bénin vise à améliorer la qualité de vie et l'intégration sociale des personnes en situation de handicap.</p>
-                            <p>En France, des initiatives sont mises en place pour garantir l'accès aux soins, à l'éducation et à l'emploi, tout en sensibilisant la population à la question du handicap. Au Bénin, le projet se concentre sur le renforcement des infrastructures, la formation de professionnels de santé et l'amélioration des services sociaux.</p>
-                            <p>L'objectif commun est de favoriser l'autonomie des personnes handicapées et de promouvoir leur inclusion dans la société, en tenant compte des spécificités culturelles et des besoins locaux. Ce projet représente un effort collaboratif pour créer un environnement plus inclusif et solidaire dans les deux pays.</p>
-
-                            <div class="x7K9mN_card-tags">
-                                <span class="x7K9mN_tag">Handicap</span>
-                                <span class="x7K9mN_tag">France</span>
-                                <span class="x7K9mN_tag">Bénin</span>
-                                <span class="x7K9mN_tag">Inclusion</span>
-                            </div>
-
-                            <a href="#" class="x7K9mN_btn_soutenir_projet">
-                                <i class='bx bx-heart'></i>
-                                Soutenir ce projet
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project 3 - En cours -->
-                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
-                        <div class="x7K9mN_card-header">
-                            <div class="x7K9mN_card-num">03</div>
-                            <h3>Projet d'accompagnement pour le retour à l'éducation au Bénin</h3>
-                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
-                                <i class='bx bx-loader-circle'></i>
-                                En cours
-                            </span>
-                        </div>
-                        <div class="x7K9mN_card-body">
-                            <p>Le projet d'accompagnement pour le retour à l'éducation au Bénin vise à soutenir les enfants et les jeunes qui ont été éloignés de l'école, en raison de divers facteurs tels que la pauvreté, les conflits ou les crises sanitaires.</p>
-                            <p>Ce projet met en place des initiatives pour faciliter leur réintégration dans le système éducatif, en offrant des ressources pédagogiques, des formations pour les enseignants et un soutien psychosocial.</p>
-                            <p>L'objectif est de garantir un accès équitable à l'éducation pour tous, tout en renforçant la qualité de l'enseignement. En favorisant un environnement d'apprentissage inclusif, le projet aspire à améliorer les perspectives d'avenir des jeunes Béninois.</p>
-
-                            <div class="x7K9mN_card-tags">
-                                <span class="x7K9mN_tag">Éducation</span>
-                                <span class="x7K9mN_tag">Réinsertion</span>
-                                <span class="x7K9mN_tag">Bénin</span>
-                            </div>
-
-                            <a href="#" class="x7K9mN_btn_soutenir_projet">
-                                <i class='bx bx-heart'></i>
-                                Soutenir ce projet
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project 4 - En cours -->
-                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="en-cours">
-                        <div class="x7K9mN_card-header">
-                            <div class="x7K9mN_card-num">04</div>
-                            <h3>Projet de contribution à la prise en charge des personnes handicapées mentales au Bénin</h3>
-                            <span class="x7K9mN_status-badge x7K9mN_en-cours">
-                                <i class='bx bx-loader-circle'></i>
-                                En cours
-                            </span>
-                        </div>
-                        <div class="x7K9mN_card-body">
-                            <p>Le projet de contribution à la prise en charge des personnes handicapées mentales au Bénin vise à améliorer la qualité de vie et l'intégration sociale de ces individus.</p>
-                            <p>Il se concentre sur plusieurs axes, notamment la sensibilisation des communautés, la formation des professionnels de la santé et l'amélioration des infrastructures de soins. L'objectif est de promouvoir une approche inclusive qui respecte les droits des personnes handicapées mentales, tout en leur offrant un accès à des services adaptés et à un soutien psychologique.</p>
-                            <p>Ce projet cherche également à impliquer les familles et à renforcer les réseaux de solidarité pour favoriser l'autonomie et le bien-être des personnes concernées.</p>
-
-                            <div class="x7K9mN_card-tags">
-                                <span class="x7K9mN_tag">Santé mentale</span>
-                                <span class="x7K9mN_tag">Bénin</span>
-                                <span class="x7K9mN_tag">Accompagnement</span>
-                            </div>
-
-                            <a href="#" class="x7K9mN_btn_soutenir_projet">
-                                <i class='bx bx-heart'></i>
-                                Soutenir ce projet
-                            </a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Catégorie Projets À Venir -->
-                <div class="x7K9mN_projects-category" data-category="a-venir">
-                    <div class="x7K9mN_category-header x7K9mN_fade-in">
-                        <div class="x7K9mN_category-icon x7K9mN_a-venir">
-                            <i class='bx bx-time'></i>
-                        </div>
-                        <div>
-                            <h3>Projets À Venir</h3>
-                            <span>2 projets en préparation pour 2026</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 5 - À venir -->
-                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="a-venir">
-                        <div class="x7K9mN_card-header">
-                            <div class="x7K9mN_card-num x7K9mN_a-venir">05</div>
-                            <h3>Projet de centre de formation à la sécurité au travail</h3>
-                            <span class="x7K9mN_status-badge x7K9mN_a-venir">
-                                <i class='bx bx-time'></i>
-                                À venir
-                            </span>
-                        </div>
-                        <div class="x7K9mN_card-body">
-                            <p>Le projet de centre de formation à la sécurité au travail vise à promouvoir des pratiques sécuritaires dans divers métiers et secteurs d'activité.</p>
-                            <p>Ce centre propose des formations adaptées aux besoins des travailleurs, en mettant l'accent sur la prévention des risques professionnels, la gestion des situations d'urgence et le respect des normes de sécurité.</p>
-                            <p>L'objectif est de sensibiliser les employés et les employeurs à l'importance de la sécurité au travail, tout en leur fournissant les compétences nécessaires pour minimiser les accidents et améliorer les conditions de travail. En intégrant des modules spécifiques liés à différents métiers, le projet aspire à créer un environnement de travail plus sûr et à renforcer la culture de la sécurité au sein des entreprises.</p>
-
-                            <div class="x7K9mN_card-tags">
-                                <span class="x7K9mN_tag">Formation</span>
-                                <span class="x7K9mN_tag">Sécurité</span>
-                                <span class="x7K9mN_tag">Emploi</span>
-                            </div>
-
-                            <a href="#" class="x7K9mN_btn_soutenir_projet">
-                                <i class='bx bx-heart'></i>
-                                Soutenir ce projet
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project 6 - À venir -->
-                    <article class="x7K9mN_project-card x7K9mN_fade-in" data-status="a-venir">
-                        <div class="x7K9mN_card-header">
-                            <div class="x7K9mN_card-num x7K9mN_a-venir">06</div>
-                            <h3>Projet d'appropriation et vulgarisation du code électoral - Élections 2026</h3>
-                            <span class="x7K9mN_status-badge x7K9mN_a-venir">
-                                <i class='bx bx-time'></i>
-                                À venir
-                            </span>
-                        </div>
-                        <div class="x7K9mN_card-body">
-                            <p>Le projet d'appropriation et de vulgarisation du code électoral dans le cadre des élections générales de 2026 en République du Bénin vise à sensibiliser et informer la population sur les dispositions du code électoral.</p>
-                            <p>L'objectif principal est de garantir une meilleure compréhension des droits et des responsabilités des citoyens en matière de vote, ainsi que des procédures électorales.</p>
-                            <p>Ce projet inclut des campagnes de sensibilisation, des ateliers de formation et la distribution de supports d'information adaptés à différents publics. En favorisant une large diffusion des connaissances sur le code électoral, le projet aspire à renforcer la participation citoyenne, à promouvoir des élections transparentes et à contribuer à la consolidation de la démocratie au Bénin.</p>
-
-                            <div class="x7K9mN_card-tags">
-                                <span class="x7K9mN_tag">Démocratie</span>
-                                <span class="x7K9mN_tag">Élections 2026</span>
-                                <span class="x7K9mN_tag">Citoyenneté</span>
-                            </div>
-
-                            <a href="#" class="x7K9mN_btn_soutenir_projet">
-                                <i class='bx bx-heart'></i>
-                                Soutenir ce projet
-                            </a>
-                        </div>
-                    </article>
-                </div>
-
-            </div>
-        </section>
-
-        
-
-        
+        <!-- Bouton CTA -->
+        <a href="#contact-devis" class="qW3vR8_btn_devis" id="qW3vR8_cta">
+          Demander un Devis Gratuit
+          <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <script>
-        (function() {
-            // Intersection Observer for fade-in animations
-            const q3R8vL_observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('x7K9mN_visible');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+  <script>
+    (function() {
+      'use strict';
 
-            document.querySelectorAll('.x7K9mN_fade-in').forEach(el => {
-                q3R8vL_observer.observe(el);
-            });
+      const settings = {
+        showDelay: 1500,
+        autoClose: 12000
+      };
 
-            // Counter animation
-            const p5T2wK_counters = document.querySelectorAll('.x7K9mN_stat-num');
-            const p5T2wK_counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = parseInt(entry.target.getAttribute('data-target'));
-                        let current = 0;
-                        const increment = target / 30;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                entry.target.textContent = target;
-                                clearInterval(timer);
-                            } else {
-                                entry.target.textContent = Math.ceil(current);
-                            }
-                        }, 50);
-                        p5T2wK_counterObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
+      let els = {};
+      let autoCloseTimeout = null;
+      let isHovered = false;
 
-            p5T2wK_counters.forEach(counter => {
-                p5T2wK_counterObserver.observe(counter);
-            });
+      function init() {
+        els = {
+          overlay: document.getElementById('qW3vR8_overlay'),
+          modal: document.getElementById('qW3vR8_modal'),
+          close: document.getElementById('qW3vR8_close'),
+          timer: document.getElementById('qW3vR8_timer'),
+          cta: document.getElementById('qW3vR8_cta')
+        };
 
-            const m8Z4xQ_filterTabs = document.querySelectorAll('.x7K9mN_filter-tab');
-            const m8Z4xQ_categories = document.querySelectorAll('.x7K9mN_projects-category');
+        if (!els.modal) return;
 
-            m8Z4xQ_filterTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
+        // Événements
+        els.close.addEventListener('click', hide);
+        els.overlay.addEventListener('click', hide);
+        
+        els.modal.addEventListener('mouseenter', function() {
+          isHovered = true;
+          if (autoCloseTimeout) {
+            clearTimeout(autoCloseTimeout);
+            autoCloseTimeout = null;
+          }
+          els.timer.classList.add('qW3vR8_paused');
+        });
 
-                    // Update active tab
-                    m8Z4xQ_filterTabs.forEach(t => t.classList.remove('x7K9mN_active'));
-                    this.classList.add('x7K9mN_active');
+        els.modal.addEventListener('mouseleave', function() {
+          isHovered = false;
+          els.timer.classList.remove('qW3vR8_paused');
+          startAutoClose();
+        });
 
-                    // Show/hide categories
-                    if (filter === 'all') {
-                        m8Z4xQ_categories.forEach(cat => {
-                            cat.classList.remove('x7K9mN_hidden');
-                        });
-                    } else {
-                        m8Z4xQ_categories.forEach(cat => {
-                            if (cat.getAttribute('data-category') === filter) {
-                                cat.classList.remove('x7K9mN_hidden');
-                            } else {
-                                cat.classList.add('x7K9mN_hidden');
-                            }
-                        });
-                    }
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') hide();
+        });
 
-                    // Re-observe fade-in elements for animation
-                    document.querySelectorAll('.x7K9mN_fade-in:not(.x7K9mN_visible)').forEach(el => {
-                        q3R8vL_observer.observe(el);
-                    });
-                });
-            });
-        })();
-    </script>
+        els.cta.addEventListener('click', function(e) {
+          e.preventDefault();
+          hide();
+          setTimeout(() => {
+            const contactSection = document.querySelector('#contact-devis');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              window.location.href = 'contact.html';
+            }
+          }, 300);
+        });
+
+        // Afficher après délai
+        setTimeout(show, settings.showDelay);
+      }
+
+      function show() {
+        els.overlay.classList.add('qW3vR8_visible');
+        els.modal.classList.add('qW3vR8_visible');
+        els.timer.classList.add('qW3vR8_running');
+        document.body.style.overflow = 'hidden';
+        startAutoClose();
+      }
+
+      function hide() {
+        if (autoCloseTimeout) {
+          clearTimeout(autoCloseTimeout);
+          autoCloseTimeout = null;
+        }
+        els.overlay.classList.remove('qW3vR8_visible');
+        els.modal.classList.remove('qW3vR8_visible');
+        els.timer.classList.remove('qW3vR8_running');
+        document.body.style.overflow = '';
+      }
+
+      function startAutoClose() {
+        if (isHovered || autoCloseTimeout) return;
+        autoCloseTimeout = setTimeout(hide, settings.autoClose);
+      }
+
+      // Initialisation
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
 </body>
 </html>

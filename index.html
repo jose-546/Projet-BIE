@@ -57,6 +57,448 @@
     
 </head>
 
+  <style>
+    /* POPUP PROJET - STYLES PREMIUM */
+
+
+
+
+
+    /* Overlay */
+    .qW3vR8_overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 15, 15, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 99998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .qW3vR8_overlay.qW3vR8_visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Modal */
+    .qW3vR8_modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(30px);
+      z-index: 99999;
+      width: 94%;
+      max-width: 480px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .qW3vR8_modal.qW3vR8_visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
+    /* Carte */
+    .qW3vR8_card {
+      background: #faf8f5;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 
+        0 50px 100px -20px rgba(0, 0, 0, 0.5),
+        0 30px 60px -30px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .qW3vR8_card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      z-index: 1;
+    }
+
+    /* Bouton fermer */
+    .qW3vR8_close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: #E33C34;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .qW3vR8_close:hover {
+      background: black;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .qW3vR8_close i {
+      font-size: 22px;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .qW3vR8_close:hover i {
+      transform: rotate(90deg);
+    }
+
+    /* Section visuelle */
+    .qW3vR8_visual {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .qW3vR8_image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 6s ease;
+    }
+
+    .qW3vR8_modal.qW3vR8_visible .qW3vR8_image {
+      transform: scale(1.05);
+    }
+
+    .qW3vR8_visual::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Badge statut */
+    .qW3vR8_status {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E33C34;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+
+    .qW3vR8_status i {
+      font-size: 14px;
+      animation: qW3vR8_rotate 2s linear infinite;
+    }
+
+    @keyframes qW3vR8_rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Titre */
+    .qW3vR8_image_title {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      z-index: 2;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Corps */
+    .qW3vR8_body {
+      padding: 28px 28px 24px;
+    }
+
+    /* Titre principal */
+    .qW3vR8_main_title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1c1c1c;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Description */
+    .qW3vR8_desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+    }
+
+    .qW3vR8_highlight {
+      color: #E33C34;
+      font-weight: 600;
+    }
+
+    /* Services grid */
+    .qW3vR8_services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .qW3vR8_service_item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .qW3vR8_service_item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .qW3vR8_service_item i {
+      color: #E33C34;
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .qW3vR8_service_text {
+      font-size: 13px;
+      font-weight: 500;
+      color: #4a4a4a;
+      line-height: 1.4;
+    }
+
+    /* Stats */
+    .qW3vR8_stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(26, 95, 74, 0.1);
+    }
+
+    .qW3vR8_stat {
+      flex: 1;
+      text-align: center;
+    }
+
+    .qW3vR8_stat_icon {
+      font-size: 24px;
+      color: #1a5f4a;
+      margin-bottom: 4px;
+    }
+
+    .qW3vR8_stat_label {
+      font-size: 11px;
+      color: #6b6b6b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      font-weight: 600;
+    }
+
+    /* Boutons CTA */
+    .qW3vR8_buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .qW3vR8_btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .qW3vR8_btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .qW3vR8_btn:hover::before {
+      left: 100%;
+    }
+
+    .qW3vR8_btn i {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .qW3vR8_btn_yellow {
+      background: #F3B42C;
+      color: #fff;
+    }
+
+    .qW3vR8_btn_yellow:hover {
+      background: #E33C34;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .qW3vR8_btn_red {
+      background: #d32f2f;
+      color: #fff;
+    }
+
+    .qW3vR8_btn_red:hover {
+      background: #F3B42C;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.4);
+    }
+
+    .qW3vR8_btn:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Timer */
+    .qW3vR8_timer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: #E33C34;
+      width: 100%;
+      transform-origin: left;
+      z-index: 1;
+    }
+
+    .qW3vR8_timer.qW3vR8_running {
+      animation: qW3vR8_shrink 12s linear forwards;
+    }
+
+    .qW3vR8_timer.qW3vR8_paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes qW3vR8_shrink {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .qW3vR8_modal {
+        width: 92%;
+        max-width: none;
+      }
+
+      .qW3vR8_card {
+        border-radius: 16px;
+      }
+
+      .qW3vR8_visual {
+        aspect-ratio: 16 / 11;
+      }
+
+      .qW3vR8_image_title {
+        font-size: 19px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .qW3vR8_body {
+        padding: 24px 20px 20px;
+      }
+
+      .qW3vR8_desc {
+        font-size: 14px;
+      }
+
+      .qW3vR8_services {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .qW3vR8_stats {
+        gap: 12px;
+      }
+
+      .qW3vR8_buttons {
+        gap: 10px;
+      }
+
+      .qW3vR8_btn {
+        padding: 12px 16px;
+        font-size: 12px;
+      }
+
+      .qW3vR8_close {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .qW3vR8_image_title {
+        font-size: 17px;
+      }
+
+      .qW3vR8_service_item {
+        padding: 10px;
+      }
+
+      .qW3vR8_service_text {
+        font-size: 12px;
+      }
+    }
+  </style>
+ 
+
 <body>
 
 
@@ -1007,6 +1449,147 @@ Cette initiative témoigne de notre volonté de nous implanter durablement dans 
             </div>
         </section>
         <!--Blog One End-->
+
+
+
+
+ <!-- Overlay -->
+<div class="qW3vR8_overlay" id="qW3vR8_overlay"></div>
+
+<!-- Modal -->
+<div class="qW3vR8_modal" id="qW3vR8_modal">
+  <div class="qW3vR8_card">
+    <!-- Timer -->
+    <div class="qW3vR8_timer" id="qW3vR8_timer"></div>
+
+    <!-- Bouton fermer -->
+    <button class="qW3vR8_close" id="qW3vR8_close" aria-label="Fermer">
+      <i class='bx bx-x'></i>
+    </button>
+
+    <!-- Section visuelle -->
+    <div class="qW3vR8_visual">
+      <img 
+        src="img/bei-digi.png" 
+        alt="BEI Digital Services" 
+        class="qW3vR8_image"
+      >
+    </div>
+
+    <!-- Contenu -->
+    <div class="qW3vR8_body">
+      <!-- Titre principal -->
+      <h2 class="qW3vR8_main_title">Votre Transformation Numérique à Prix Solidaires</h2>
+
+      <!-- Description -->
+      <p class="qW3vR8_desc">
+        Des <span class="qW3vR8_highlight">créations digitales professionnelles</span> à tarifs solidaires : sites web, logos, identité visuelle et supports publicitaires. L'excellence accessible à tous.
+      </p>
+
+      <!-- Boutons CTA -->
+      <div class="qW3vR8_buttons">
+        <a href="projet.html#detail_digi" class="qW3vR8_btn qW3vR8_btn_yellow">
+          VOIR LES DÉTAILS
+        </a>
+        <a href="#" class="qW3vR8_btn qW3vR8_btn_red">
+          DEMANDER UN DEVIS
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CSS pour scroll fluide -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<!-- Script modal -->
+<script>
+(function() {
+  'use strict';
+
+  const settings = {
+    showDelay: 1500,
+    autoClose: 12000
+  };
+
+  let els = {};
+  let autoCloseTimeout = null;
+  let isHovered = false;
+
+  function init() {
+    els = {
+      overlay: document.getElementById('qW3vR8_overlay'),
+      modal: document.getElementById('qW3vR8_modal'),
+      close: document.getElementById('qW3vR8_close'),
+      timer: document.getElementById('qW3vR8_timer')
+    };
+
+    if (!els.modal) return;
+
+    // Événements
+    els.close.addEventListener('click', hide);
+    els.overlay.addEventListener('click', hide);
+
+    els.modal.addEventListener('mouseenter', function() {
+      isHovered = true;
+      if (autoCloseTimeout) {
+        clearTimeout(autoCloseTimeout);
+        autoCloseTimeout = null;
+      }
+      els.timer.classList.add('qW3vR8_paused');
+    });
+
+    els.modal.addEventListener('mouseleave', function() {
+      isHovered = false;
+      els.timer.classList.remove('qW3vR8_paused');
+      startAutoClose();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') hide();
+    });
+
+    // Afficher après délai
+    setTimeout(show, settings.showDelay);
+  }
+
+  function show() {
+    els.overlay.classList.add('qW3vR8_visible');
+    els.modal.classList.add('qW3vR8_visible');
+    els.timer.classList.add('qW3vR8_running');
+    document.body.style.overflow = 'hidden';
+    startAutoClose();
+  }
+
+  function hide() {
+    if (autoCloseTimeout) {
+      clearTimeout(autoCloseTimeout);
+      autoCloseTimeout = null;
+    }
+    els.overlay.classList.remove('qW3vR8_visible');
+    els.modal.classList.remove('qW3vR8_visible');
+    els.timer.classList.remove('qW3vR8_running');
+    document.body.style.overflow = '';
+  }
+
+  function startAutoClose() {
+    if (isHovered || autoCloseTimeout) return;
+    autoCloseTimeout = setTimeout(hide, settings.autoClose);
+  }
+
+  // Initialisation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
         <!--Google Map End-->
 
         <!--Site Footer Start-->
