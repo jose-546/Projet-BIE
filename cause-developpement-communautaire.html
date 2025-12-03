@@ -57,6 +57,354 @@
     
 </head>
 
+  <style>
+       
+
+        /* POPUP DON - OVERLAY ET CONTAINER */
+        .dN4qX7_popup_overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .dN4qX7_popup_overlay.dN4qX7_active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dN4qX7_popup_container {
+            background: #ffffff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            margin: auto;
+            max-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dN4qX7_popup_overlay.dN4qX7_active .dN4qX7_popup_container {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Bouton fermer */
+        .dN4qX7_btn_close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: #00794C;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .dN4qX7_btn_close:hover {
+            background: #005c3d;
+            transform: rotate(90deg);
+        }
+
+        .dN4qX7_btn_close i {
+            font-size: 22px;
+            color: #fff;
+        }
+
+        /* Contenu du popup - Scrollable */
+        .dN4qX7_popup_content {
+            padding: 35px 30px 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Section méthode de paiement */
+        .dN4qX7_payment_section {
+            margin-bottom: 24px;
+        }
+
+        .dN4qX7_payment_section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .dN4qX7_section_label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dN4qX7_section_label::before {
+            content: '';
+            width: 16px;
+            height: 2px;
+            background: #00794C;
+            border-radius: 1px;
+        }
+
+        /* Carte de paiement */
+        .dN4qX7_payment_card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .dN4qX7_payment_card:hover {
+            border-color: #00794C;
+            box-shadow: 0 4px 12px rgba(0, 121, 76, 0.08);
+        }
+
+        .dN4qX7_payment_icon {
+            width: 52px;
+            height: 52px;
+            background: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .dN4qX7_payment_icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .dN4qX7_payment_icon i {
+            font-size: 26px;
+            color: #E33C34;
+        }
+
+        .dN4qX7_payment_info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .dN4qX7_payment_name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .dN4qX7_payment_number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: 0.5px;
+        }
+
+        .dN4qX7_payment_holder {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Bouton copier */
+        .dN4qX7_btn_copy {
+            width: 40px;
+            height: 40px;
+            background: #00794C;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .dN4qX7_btn_copy:hover {
+            background: #005c3d;
+            transform: scale(1.05);
+        }
+
+        .dN4qX7_btn_copy:active {
+            transform: scale(0.95);
+        }
+
+        .dN4qX7_btn_copy i {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .dN4qX7_btn_copy.dN4qX7_copied {
+            background: #00794C;
+        }
+
+        /* Info don en nature */
+        .dN4qX7_nature_info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .dN4qX7_nature_text {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        /* Bouton WhatsApp */
+        .dN4qX7_btn_whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: #00794C;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .dN4qX7_btn_whatsapp:hover {
+            background: #1ebe5d;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+        }
+
+        .dN4qX7_btn_whatsapp:active {
+            transform: translateY(0);
+        }
+
+        .dN4qX7_btn_whatsapp i {
+            font-size: 20px;
+        }
+
+        /* Footer du popup */
+        .dN4qX7_popup_footer {
+            padding: 20px 30px;
+            background: #f1f5f9;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .dN4qX7_footer_text {
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dN4qX7_footer_text i {
+            color: #E33C34;
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 520px) {
+            .dN4qX7_popup_overlay {
+                padding: 10px;
+            }
+
+            .dN4qX7_popup_container {
+                max-width: 100%;
+                border-radius: 16px;
+                max-height: calc(100vh - 20px);
+            }
+
+            .dN4qX7_popup_content {
+                padding: 30px 20px 24px;
+            }
+
+            .dN4qX7_payment_card {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .dN4qX7_payment_info,
+            .dN4qX7_nature_info {
+                flex: 1 1 calc(100% - 68px);
+            }
+
+            .dN4qX7_btn_copy {
+                margin-left: auto;
+            }
+
+            .dN4qX7_popup_footer {
+                padding: 16px 20px;
+            }
+
+            .dN4qX7_btn_whatsapp {
+                width: 100%;
+            }
+        }
+
+        /* Bouton démo */
+        .dN4qX7_demo_btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #c0392b;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.35);
+            transition: transform 0.2s ease;
+        }
+
+        .dN4qX7_demo_btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .dN4qX7_demo_btn i {
+            font-size: 18px;
+        }
+    </style>
 <body>
 
 
@@ -287,9 +635,9 @@
                         prévenir des maladies et offrir un avenir plus sain à des communautés entières.
                     </p>
 
-                    <div class="cause-details__btn-and-social">
+                    <div class="cause-details__btn-and-social" id="dN4qX7_demoBtn">
                         <div class="cause-details__btn-box">
-                            <a href="https://wa.me/33603850544?text=Je%20souhaite%20faire%20un%20don%20%C3%A0%20cette%20cause....." target="_blank" class="cause-details__btn thm-btn">Faire un don</a>
+                            <a href="javascript:DonPopup();" class="cause-details__btn thm-btn">Faire un don</a>
                         </div>
                     </div>
 
@@ -301,6 +649,140 @@
 
         <!--Cause Details End-->
 
+          <!-- POPUP DON -->
+    <div class="dN4qX7_popup_overlay" id="dN4qX7_popupDon">
+        <div class="dN4qX7_popup_container">
+            
+            <!-- Bouton fermer -->
+            <button class="dN4qX7_btn_close" id="dN4qX7_btnClose" aria-label="Fermer">
+                <i class='bx bx-x'></i>
+            </button>
+
+            <!-- Contenu scrollable -->
+            <div class="dN4qX7_popup_content">
+                
+                <!-- Mobile Money -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Mobile Money</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <img src="img/celtiiscash.png" alt="Mobile Money">
+                        </div>
+                        <div class="dN4qX7_payment_info">
+                            <div class="dN4qX7_payment_name">Celtiis cash</div>
+                            <div class="dN4qX7_payment_number">+229 01 48 15 74 73</div>
+                            <div class="dN4qX7_payment_holder">BIEN-ÊTRE INTERNATIONAL</div>
+                        </div>
+                        <button class="dN4qX7_btn_copy" data-copy="+229 XX XX XX XX" title="Copier le numéro">
+                            <i class='bx bx-copy'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Virement Bancaire -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Virement Bancaire</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <i class='bx bxs-bank'></i>
+                        </div>
+                        <div class="dN4qX7_payment_info">
+                            <div class="dN4qX7_payment_name">RIB bancaire</div>
+                            <div class="dN4qX7_payment_number">XX XX XXXX XXXX XXXX XXXX</div>
+                            <div class="dN4qX7_payment_holder">BIEN-ÊTRE INTERNATIONAL</div>
+                        </div>
+                        <button class="dN4qX7_btn_copy" data-copy="BJ XX XXXX XXXX XXXX XXXX" title="Copier l'IBAN" aria-label="Copier l'IBAN">
+                            <i class='bx bx-copy'></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Don en Nature -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Don en Nature</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <i class='bx bxs-gift'></i>
+                        </div>
+                        <div class="dN4qX7_nature_info">
+                            <p class="dN4qX7_nature_text">
+                                Pour tout don en nature (matériel scolaire, équipements, fournitures...), contactez-nous directement sur WhatsApp.
+                            </p>
+                            <a href="https://wa.me/229XXXXXXXX?text=Bonjour,%20je%20souhaite%20faire%20un%20don%20en%20nature%20pour%20le%20projet." class="dN4qX7_btn_whatsapp" target="_blank" rel="noopener">
+                                <i class='bx bxl-whatsapp'></i>
+                                Contact WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="dN4qX7_popup_footer">
+                <p class="dN4qX7_footer_text">
+                    <i class='bx bxs-heart'></i>
+                    Merci pour votre générosité et votre soutien
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+  
+
+    <script>
+        (function() {
+            const dN4qX7_popup = document.getElementById('dN4qX7_popupDon');
+            const dN4qX7_btnClose = document.getElementById('dN4qX7_btnClose');
+            const dN4qX7_demoBtn = document.getElementById('dN4qX7_demoBtn');
+            const dN4qX7_copyBtns = document.querySelectorAll('.dN4qX7_btn_copy');
+
+            function dN4qX7_openPopup() {
+                dN4qX7_popup.classList.add('dN4qX7_active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function dN4qX7_closePopup() {
+                dN4qX7_popup.classList.remove('dN4qX7_active');
+                document.body.style.overflow = '';
+            }
+
+            if (dN4qX7_demoBtn) {
+                dN4qX7_demoBtn.addEventListener('click', dN4qX7_openPopup);
+            }
+
+            if (dN4qX7_btnClose) {
+                dN4qX7_btnClose.addEventListener('click', dN4qX7_closePopup);
+            }
+
+            dN4qX7_popup.addEventListener('click', function(e) {
+                if (e.target === dN4qX7_popup) {
+                    dN4qX7_closePopup();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && dN4qX7_popup.classList.contains('dN4qX7_active')) {
+                    dN4qX7_closePopup();
+                }
+            });
+
+            dN4qX7_copyBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        btn.classList.add('dN4qX7_copied');
+                        setTimeout(function() {
+                            btn.classList.remove('dN4qX7_copied');
+                        }, 2000);
+                    });
+                });
+            });
+
+            window.dN4qX7_openDonPopup = dN4qX7_openPopup;
+        })();
+    </script>
           <!--Site Footer Start-->
         <footer class="site-footer site-footer-two">
             <div class="site-footer__shape-1 float-bob-y">

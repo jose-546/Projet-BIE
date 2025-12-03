@@ -1,604 +1,503 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popup BEI Digital Services</title>
-  <!-- Boxicons CDN -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <style>
-    /* POPUP PROJET - STYLES PREMIUM */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Don - Bien-Être International</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
+        /* POPUP DON - OVERLAY ET CONTAINER */
+        .dN4qX7_popup_overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
 
+        .dN4qX7_popup_overlay.dN4qX7_active {
+            opacity: 1;
+            visibility: visible;
+        }
 
- 
+        .dN4qX7_popup_container {
+            background: #ffffff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            margin: auto;
+            max-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* Overlay */
-    .qW3vR8_overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 15, 15, 0.75);
-      backdrop-filter: blur(4px);
-      z-index: 99998;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        .dN4qX7_popup_overlay.dN4qX7_active .dN4qX7_popup_container {
+            transform: scale(1) translateY(0);
+        }
 
-    .qW3vR8_overlay.qW3vR8_visible {
-      opacity: 1;
-      visibility: visible;
-    }
+        /* Bouton fermer */
+        .dN4qX7_btn_close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: #00794C;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            color: #fff;
+            z-index: 10;
+        }
 
-    /* Modal */
-    .qW3vR8_modal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) translateY(30px);
-      z-index: 99999;
-      width: 94%;
-      max-width: 480px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+        .dN4qX7_btn_close:hover {
+            background: #005c3d;
+            transform: rotate(90deg);
+        }
 
-    .qW3vR8_modal.qW3vR8_visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translate(-50%, -50%) translateY(0);
-    }
+        .dN4qX7_btn_close i {
+            font-size: 22px;
+            color: #fff;
+        }
 
-    /* Carte */
-    .qW3vR8_card {
-      background: #faf8f5;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 
-        0 50px 100px -20px rgba(0, 0, 0, 0.5),
-        0 30px 60px -30px rgba(0, 0, 0, 0.4);
-      position: relative;
-    }
+        /* Contenu du popup - Scrollable */
+        .dN4qX7_popup_content {
+            padding: 35px 30px 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
 
-    .qW3vR8_card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #1a5f4a, #c9a962, #1a5f4a);
-      z-index: 1;
-    }
+        /* Section méthode de paiement */
+        .dN4qX7_payment_section {
+            margin-bottom: 24px;
+        }
 
-    /* Bouton fermer */
-    .qW3vR8_close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
+        .dN4qX7_payment_section:last-of-type {
+            margin-bottom: 0;
+        }
 
-    .qW3vR8_close:hover {
-      background: #fff;
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
+        .dN4qX7_section_label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .qW3vR8_close i {
-      font-size: 22px;
-      color: #1c1c1c;
-      transition: transform 0.3s ease;
-    }
+        .dN4qX7_section_label::before {
+            content: '';
+            width: 16px;
+            height: 2px;
+            background: #00794C;
+            border-radius: 1px;
+        }
 
-    .qW3vR8_close:hover i {
-      transform: rotate(90deg);
-    }
+        /* Carte de paiement */
+        .dN4qX7_payment_card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
 
-    /* Section visuelle */
-    .qW3vR8_visual {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+        .dN4qX7_payment_card:hover {
+            border-color: #00794C;
+            box-shadow: 0 4px 12px rgba(0, 121, 76, 0.08);
+        }
 
-    .qW3vR8_image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 6s ease;
-    }
+        .dN4qX7_payment_icon {
+            width: 52px;
+            height: 52px;
+            background: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid #e2e8f0;
+        }
 
-    .qW3vR8_modal.qW3vR8_visible .qW3vR8_image {
-      transform: scale(1.05);
-    }
+        .dN4qX7_payment_icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
 
-    .qW3vR8_visual::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-      pointer-events: none;
-    }
+        .dN4qX7_payment_icon i {
+            font-size: 26px;
+            color: #E33C34;
+        }
 
-    /* Badge statut */
-    .qW3vR8_status {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #c9a962;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      z-index: 2;
-    }
+        .dN4qX7_payment_info {
+            flex: 1;
+            min-width: 0;
+        }
 
-    .qW3vR8_status i {
-      font-size: 14px;
-      animation: qW3vR8_rotate 2s linear infinite;
-    }
+        .dN4qX7_payment_name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
 
-    @keyframes qW3vR8_rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+        .dN4qX7_payment_number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: 0.5px;
+        }
 
-    /* Titre */
-    .qW3vR8_image_title {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-      z-index: 2;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-    }
+        .dN4qX7_payment_holder {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
 
-    /* Corps */
-    .qW3vR8_body {
-      padding: 28px 28px 24px;
-    }
+        /* Bouton copier */
+        .dN4qX7_btn_copy {
+            width: 40px;
+            height: 40px;
+            background: #00794C;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
 
-    /* Organisation */
-    .qW3vR8_org {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
+        .dN4qX7_btn_copy:hover {
+            background: #005c3d;
+            transform: scale(1.05);
+        }
 
-    .qW3vR8_org_icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #1a5f4a, #238565);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+        .dN4qX7_btn_copy:active {
+            transform: scale(0.95);
+        }
 
-    .qW3vR8_org_icon i {
-      color: #fff;
-      font-size: 18px;
-    }
+        .dN4qX7_btn_copy i {
+            font-size: 18px;
+            color: #fff;
+        }
 
-    .qW3vR8_org_name {
-      font-size: 12px;
-      font-weight: 600;
-      color: #6b6b6b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        .dN4qX7_btn_copy.dN4qX7_copied {
+            background: #00794C;
+        }
 
-    /* Description */
-    .qW3vR8_desc {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #4a4a4a;
-      margin-bottom: 20px;
-    }
+        /* Info don en nature */
+        .dN4qX7_nature_info {
+            flex: 1;
+            min-width: 0;
+        }
 
-    .qW3vR8_highlight {
-      color: #1a5f4a;
-      font-weight: 600;
-    }
+        .dN4qX7_nature_text {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
 
-    /* Services grid */
-    .qW3vR8_services {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
+        /* Bouton WhatsApp */
+        .dN4qX7_btn_whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 70%;
+            background: #00794C;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
 
-    .qW3vR8_service_item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px;
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
+        .dN4qX7_btn_whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+        }
 
-    .qW3vR8_service_item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
+        .dN4qX7_btn_whatsapp:active {
+            transform: translateY(0);
+        }
 
-    .qW3vR8_service_item i {
-      color: #c9a962;
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
+        .dN4qX7_btn_whatsapp i {
+            font-size: 20px;
+        }
 
-    .qW3vR8_service_text {
-      font-size: 13px;
-      font-weight: 500;
-      color: #4a4a4a;
-      line-height: 1.4;
-    }
+        /* Footer du popup */
+        .dN4qX7_popup_footer {
+            padding: 20px 30px;
+            background: #f1f5f9;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
 
-    /* Stats */
-    .qW3vR8_stats {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
-      padding: 16px;
-      background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 100%);
-      border-radius: 12px;
-      border: 1px solid rgba(26, 95, 74, 0.1);
-    }
+        .dN4qX7_footer_text {
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-    .qW3vR8_stat {
-      flex: 1;
-      text-align: center;
-    }
+        .dN4qX7_footer_text i {
+            color: #E33C34;
+            font-size: 16px;
+        }
 
-    .qW3vR8_stat_icon {
-      font-size: 24px;
-      color: #1a5f4a;
-      margin-bottom: 4px;
-    }
+        /* Responsive */
+        @media (max-width: 520px) {
+            .dN4qX7_popup_overlay {
+                padding: 10px;
+            }
 
-    .qW3vR8_stat_label {
-      font-size: 11px;
-      color: #6b6b6b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      display: block;
-      font-weight: 600;
-    }
+            .dN4qX7_popup_container {
+                max-width: 100%;
+                border-radius: 16px;
+                max-height: calc(100vh - 20px);
+            }
 
-    /* Bouton CTA */
-    .qW3vR8_btn_devis {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      padding: 16px 28px;
-      background: #c9a962;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
+            .dN4qX7_popup_content {
+                padding: 30px 20px 24px;
+            }
 
-    .qW3vR8_btn_devis::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
+            .dN4qX7_payment_card {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
 
-    .qW3vR8_btn_devis:hover {
-      background: #b89952;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(201, 169, 98, 0.4);
-    }
+            .dN4qX7_payment_info,
+            .dN4qX7_nature_info {
+                flex: 1 1 calc(100% - 68px);
+            }
 
-    .qW3vR8_btn_devis:hover::before {
-      left: 100%;
-    }
+            .dN4qX7_btn_copy {
+                margin-left: auto;
+            }
 
-    .qW3vR8_btn_devis i {
-      font-size: 18px;
-      transition: transform 0.3s ease;
-    }
+            .dN4qX7_popup_footer {
+                padding: 16px 20px;
+            }
 
-    .qW3vR8_btn_devis:hover i {
-      transform: translateX(4px);
-    }
+            .dN4qX7_btn_whatsapp {
+                width: 100%;
+            }
+        }
 
-    /* Timer */
-    .qW3vR8_timer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      background: #c9a962;
-      width: 100%;
-      transform-origin: left;
-      z-index: 1;
-    }
+        /* Bouton démo */
+        .dN4qX7_demo_btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #c0392b;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.35);
+            transition: transform 0.2s ease;
+        }
 
-    .qW3vR8_timer.qW3vR8_running {
-      animation: qW3vR8_shrink 12s linear forwards;
-    }
+        .dN4qX7_demo_btn:hover {
+            transform: translateY(-2px);
+        }
 
-    .qW3vR8_timer.qW3vR8_paused {
-      animation-play-state: paused;
-    }
-
-    @keyframes qW3vR8_shrink {
-      from { transform: scaleX(1); }
-      to { transform: scaleX(0); }
-    }
-
-    /* Responsive */
-    @media (max-width: 520px) {
-      .qW3vR8_modal {
-        width: 92%;
-        max-width: none;
-      }
-
-      .qW3vR8_card {
-        border-radius: 16px;
-      }
-
-      .qW3vR8_visual {
-        aspect-ratio: 16 / 11;
-      }
-
-      .qW3vR8_image_title {
-        font-size: 19px;
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
-      }
-
-      .qW3vR8_body {
-        padding: 24px 20px 20px;
-      }
-
-      .qW3vR8_desc {
-        font-size: 14px;
-      }
-
-      .qW3vR8_services {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .qW3vR8_stats {
-        gap: 12px;
-      }
-
-      .qW3vR8_btn_devis {
-        padding: 14px 24px;
-        font-size: 13px;
-      }
-
-      .qW3vR8_close {
-        top: 12px;
-        right: 12px;
-        width: 36px;
-        height: 36px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .qW3vR8_image_title {
-        font-size: 17px;
-      }
-
-      .qW3vR8_service_item {
-        padding: 10px;
-      }
-
-      .qW3vR8_service_text {
-        font-size: 12px;
-      }
-    }
-  </style>
+        .dN4qX7_demo_btn i {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-  <!-- Overlay -->
-  <div class="qW3vR8_overlay" id="qW3vR8_overlay"></div>
 
-  <!-- Modal -->
-  <div class="qW3vR8_modal" id="qW3vR8_modal">
-    <div class="qW3vR8_card">
-      <!-- Timer -->
-      <div class="qW3vR8_timer" id="qW3vR8_timer"></div>
+    <!-- POPUP DON -->
+    <div class="dN4qX7_popup_overlay" id="dN4qX7_popupDon">
+        <div class="dN4qX7_popup_container">
+            
+            <!-- Bouton fermer -->
+            <button class="dN4qX7_btn_close" id="dN4qX7_btnClose" aria-label="Fermer">
+                <i class='bx bx-x'></i>
+            </button>
 
-      <!-- Bouton fermer -->
-      <button class="qW3vR8_close" id="qW3vR8_close" aria-label="Fermer">
-        <i class='bx bx-x'></i>
-      </button>
+            <!-- Contenu scrollable -->
+            <div class="dN4qX7_popup_content">
+                
+                <!-- Mobile Money -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Mobile Money</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <img src="img/celtiiscash.png" alt="Mobile Money">
+                        </div>
+                        <div class="dN4qX7_payment_info">
+                            <div class="dN4qX7_payment_name">Celtiis cash</div>
+                            <div class="dN4qX7_payment_number">+229 01 48 15 74 73</div>
+                            <div class="dN4qX7_payment_holder">BIEN-ÊTRE INTERNATIONAL</div>
+                        </div>
+                        <button class="dN4qX7_btn_copy" data-copy="+229 XX XX XX XX" title="Copier le numéro">
+                            <i class='bx bx-copy'></i>
+                        </button>
+                    </div>
+                </div>
 
-      <!-- Section visuelle -->
-      <div class="qW3vR8_visual">
-        <img 
-          src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" 
-          alt="BEI Digital Services" 
-          class="qW3vR8_image"
-        >
-        <span class="qW3vR8_status">
-          <i class='bx bx-loader-circle'></i>
-          En cours
-        </span>
-        <h2 class="qW3vR8_image_title">Votre Transformation Numérique à Prix Solidaires</h2>
-      </div>
+                <!-- Virement Bancaire -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Virement Bancaire</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <i class='bx bxs-bank'></i>
+                        </div>
+                        <div class="dN4qX7_payment_info">
+                            <div class="dN4qX7_payment_name">RIB bancaire</div>
+                            <div class="dN4qX7_payment_number">XX XX XXXX XXXX XXXX XXXX</div>
+                            <div class="dN4qX7_payment_holder">BIEN-ÊTRE INTERNATIONAL</div>
+                        </div>
+                        <button class="dN4qX7_btn_copy" data-copy="BJ XX XXXX XXXX XXXX XXXX" title="Copier l'IBAN" aria-label="Copier l'IBAN">
+                            <i class='bx bx-copy'></i>
+                        </button>
+                    </div>
+                </div>
 
-      <!-- Contenu -->
-      <div class="qW3vR8_body">
-        <!-- Organisation -->
-        <div class="qW3vR8_org">
-          <div class="qW3vR8_org_icon">
-            <i class='bx bx-palette'></i>
-          </div>
-          <span class="qW3vR8_org_name">Bien-Être International</span>
+                <!-- Don en Nature -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Don en Nature</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <i class='bx bxs-gift'></i>
+                        </div>
+                        <div class="dN4qX7_nature_info">
+                            <p class="dN4qX7_nature_text">
+                                Pour tout don en nature (matériel scolaire, équipements, fournitures...), contactez-nous directement sur WhatsApp.
+                            </p>
+                            <a href="https://wa.me/229XXXXXXXX?text=Bonjour,%20je%20souhaite%20faire%20un%20don%20en%20nature%20pour%20le%20projet." class="dN4qX7_btn_whatsapp" target="_blank" rel="noopener">
+                                <i class='bx bxl-whatsapp'></i>
+                                Contact WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="dN4qX7_popup_footer">
+                <p class="dN4qX7_footer_text">
+                    <i class='bx bxs-heart'></i>
+                    Merci pour votre générosité et votre soutien
+                </p>
+            </div>
+
         </div>
-
-        <!-- Description -->
-        <p class="qW3vR8_desc">
-          Des <span class="qW3vR8_highlight">créations digitales professionnelles</span> à tarifs solidaires : sites web, logos, identité visuelle et supports publicitaires. L'excellence accessible à tous.
-        </p>
-
-       
-
-       
-
-        <!-- Bouton CTA -->
-        <a href="#contact-devis" class="qW3vR8_btn_devis" id="qW3vR8_cta">
-          Demander un Devis Gratuit
-          <i class='bx bx-right-arrow-alt'></i>
-        </a>
-      </div>
     </div>
-  </div>
 
-  <script>
-    (function() {
-      'use strict';
+  
 
-      const settings = {
-        showDelay: 1500,
-        autoClose: 12000
-      };
+    <script>
+        (function() {
+            const dN4qX7_popup = document.getElementById('dN4qX7_popupDon');
+            const dN4qX7_btnClose = document.getElementById('dN4qX7_btnClose');
+            const dN4qX7_demoBtn = document.getElementById('dN4qX7_demoBtn');
+            const dN4qX7_copyBtns = document.querySelectorAll('.dN4qX7_btn_copy');
 
-      let els = {};
-      let autoCloseTimeout = null;
-      let isHovered = false;
-
-      function init() {
-        els = {
-          overlay: document.getElementById('qW3vR8_overlay'),
-          modal: document.getElementById('qW3vR8_modal'),
-          close: document.getElementById('qW3vR8_close'),
-          timer: document.getElementById('qW3vR8_timer'),
-          cta: document.getElementById('qW3vR8_cta')
-        };
-
-        if (!els.modal) return;
-
-        // Événements
-        els.close.addEventListener('click', hide);
-        els.overlay.addEventListener('click', hide);
-        
-        els.modal.addEventListener('mouseenter', function() {
-          isHovered = true;
-          if (autoCloseTimeout) {
-            clearTimeout(autoCloseTimeout);
-            autoCloseTimeout = null;
-          }
-          els.timer.classList.add('qW3vR8_paused');
-        });
-
-        els.modal.addEventListener('mouseleave', function() {
-          isHovered = false;
-          els.timer.classList.remove('qW3vR8_paused');
-          startAutoClose();
-        });
-
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape') hide();
-        });
-
-        els.cta.addEventListener('click', function(e) {
-          e.preventDefault();
-          hide();
-          setTimeout(() => {
-            const contactSection = document.querySelector('#contact-devis');
-            if (contactSection) {
-              contactSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-              window.location.href = 'contact.html';
+            function dN4qX7_openPopup() {
+                dN4qX7_popup.classList.add('dN4qX7_active');
+                document.body.style.overflow = 'hidden';
             }
-          }, 300);
-        });
 
-        // Afficher après délai
-        setTimeout(show, settings.showDelay);
-      }
+            function dN4qX7_closePopup() {
+                dN4qX7_popup.classList.remove('dN4qX7_active');
+                document.body.style.overflow = '';
+            }
 
-      function show() {
-        els.overlay.classList.add('qW3vR8_visible');
-        els.modal.classList.add('qW3vR8_visible');
-        els.timer.classList.add('qW3vR8_running');
-        document.body.style.overflow = 'hidden';
-        startAutoClose();
-      }
+            if (dN4qX7_demoBtn) {
+                dN4qX7_demoBtn.addEventListener('click', dN4qX7_openPopup);
+            }
 
-      function hide() {
-        if (autoCloseTimeout) {
-          clearTimeout(autoCloseTimeout);
-          autoCloseTimeout = null;
-        }
-        els.overlay.classList.remove('qW3vR8_visible');
-        els.modal.classList.remove('qW3vR8_visible');
-        els.timer.classList.remove('qW3vR8_running');
-        document.body.style.overflow = '';
-      }
+            if (dN4qX7_btnClose) {
+                dN4qX7_btnClose.addEventListener('click', dN4qX7_closePopup);
+            }
 
-      function startAutoClose() {
-        if (isHovered || autoCloseTimeout) return;
-        autoCloseTimeout = setTimeout(hide, settings.autoClose);
-      }
+            dN4qX7_popup.addEventListener('click', function(e) {
+                if (e.target === dN4qX7_popup) {
+                    dN4qX7_closePopup();
+                }
+            });
 
-      // Initialisation
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && dN4qX7_popup.classList.contains('dN4qX7_active')) {
+                    dN4qX7_closePopup();
+                }
+            });
+
+            dN4qX7_copyBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        btn.classList.add('dN4qX7_copied');
+                        setTimeout(function() {
+                            btn.classList.remove('dN4qX7_copied');
+                        }, 2000);
+                    });
+                });
+            });
+
+            window.dN4qX7_openDonPopup = dN4qX7_openPopup;
+        })();
+    </script>
+
 </body>
 </html>

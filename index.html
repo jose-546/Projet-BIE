@@ -56,13 +56,361 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     
 </head>
-
   <style>
-    /* POPUP PROJET - STYLES PREMIUM */
+       
 
+        /* POPUP DON - OVERLAY ET CONTAINER */
+        .dN4qX7_popup_overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
 
+        .dN4qX7_popup_overlay.dN4qX7_active {
+            opacity: 1;
+            visibility: visible;
+        }
 
+        .dN4qX7_popup_container {
+            background: #ffffff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            margin: auto;
+            max-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+        }
 
+        .dN4qX7_popup_overlay.dN4qX7_active .dN4qX7_popup_container {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Bouton fermer */
+        .dN4qX7_btn_close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: #00794C;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .dN4qX7_btn_close:hover {
+            background: #005c3d;
+            transform: rotate(90deg);
+        }
+
+        .dN4qX7_btn_close i {
+            font-size: 22px;
+            color: #fff;
+        }
+
+        /* Contenu du popup - Scrollable */
+        .dN4qX7_popup_content {
+            padding: 35px 30px 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Section méthode de paiement */
+        .dN4qX7_payment_section {
+            margin-bottom: 24px;
+        }
+
+        .dN4qX7_payment_section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .dN4qX7_section_label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dN4qX7_section_label::before {
+            content: '';
+            width: 16px;
+            height: 2px;
+            background: #00794C;
+            border-radius: 1px;
+        }
+
+        /* Carte de paiement */
+        .dN4qX7_payment_card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .dN4qX7_payment_card:hover {
+            border-color: #00794C;
+            box-shadow: 0 4px 12px rgba(0, 121, 76, 0.08);
+        }
+
+        .dN4qX7_payment_icon {
+            width: 52px;
+            height: 52px;
+            background: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .dN4qX7_payment_icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .dN4qX7_payment_icon i {
+            font-size: 26px;
+            color: #E33C34;
+        }
+
+        .dN4qX7_payment_info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .dN4qX7_payment_name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .dN4qX7_payment_number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: 0.5px;
+        }
+
+        .dN4qX7_payment_holder {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Bouton copier */
+        .dN4qX7_btn_copy {
+            width: 40px;
+            height: 40px;
+            background: #00794C;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .dN4qX7_btn_copy:hover {
+            background: #005c3d;
+            transform: scale(1.05);
+        }
+
+        .dN4qX7_btn_copy:active {
+            transform: scale(0.95);
+        }
+
+        .dN4qX7_btn_copy i {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .dN4qX7_btn_copy.dN4qX7_copied {
+            background: #00794C;
+        }
+
+        /* Info don en nature */
+        .dN4qX7_nature_info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .dN4qX7_nature_text {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        /* Bouton WhatsApp */
+        .dN4qX7_btn_whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: #00794C;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .dN4qX7_btn_whatsapp:hover {
+            background: #1ebe5d;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+        }
+
+        .dN4qX7_btn_whatsapp:active {
+            transform: translateY(0);
+        }
+
+        .dN4qX7_btn_whatsapp i {
+            font-size: 20px;
+        }
+
+        /* Footer du popup */
+        .dN4qX7_popup_footer {
+            padding: 20px 30px;
+            background: #f1f5f9;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .dN4qX7_footer_text {
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dN4qX7_footer_text i {
+            color: #E33C34;
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 520px) {
+            .dN4qX7_popup_overlay {
+                padding: 10px;
+            }
+
+            .dN4qX7_popup_container {
+                max-width: 100%;
+                border-radius: 16px;
+                max-height: calc(100vh - 20px);
+            }
+
+            .dN4qX7_popup_content {
+                padding: 30px 20px 24px;
+            }
+
+            .dN4qX7_payment_card {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .dN4qX7_payment_info,
+            .dN4qX7_nature_info {
+                flex: 1 1 calc(100% - 68px);
+            }
+
+            .dN4qX7_btn_copy {
+                margin-left: auto;
+            }
+
+            .dN4qX7_popup_footer {
+                padding: 16px 20px;
+            }
+
+            .dN4qX7_btn_whatsapp {
+                width: 100%;
+            }
+        }
+
+        /* Bouton démo */
+        .dN4qX7_demo_btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #c0392b;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.35);
+            transition: transform 0.2s ease;
+        }
+
+        .dN4qX7_demo_btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .dN4qX7_demo_btn i {
+            font-size: 18px;
+        }
+    </style>
+
+<style>
+   
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     /* Overlay */
     .qW3vR8_overlay {
@@ -74,6 +422,11 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .qW3vR8_overlay.qW3vR8_visible {
@@ -83,43 +436,41 @@
 
     /* Modal */
     .qW3vR8_modal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) translateY(30px);
-      z-index: 99999;
-      width: 94%;
+      width: 100%;
       max-width: 480px;
       opacity: 0;
       visibility: hidden;
+      transform: translateY(30px);
       transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      margin: auto;
     }
 
     .qW3vR8_modal.qW3vR8_visible {
       opacity: 1;
       visibility: visible;
-      transform: translate(-50%, -50%) translateY(0);
+      transform: translateY(0);
     }
 
     /* Carte */
     .qW3vR8_card {
       background: #faf8f5;
       border-radius: 20px;
-      overflow: hidden;
       box-shadow: 
         0 50px 100px -20px rgba(0, 0, 0, 0.5),
         0 30px 60px -30px rgba(0, 0, 0, 0.4);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 40px);
+      overflow: hidden;
     }
-
-    .qW3vR8_card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      z-index: 1;
+    
+    /* Container interne scrollable */
+    .qW3vR8_card_inner {
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Bouton fermer */
@@ -163,6 +514,8 @@
       aspect-ratio: 16 / 10;
       overflow: hidden;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      flex-shrink: 0;
+      border-radius: 20px 20px 0 0;
     }
 
     .qW3vR8_image {
@@ -187,53 +540,10 @@
       pointer-events: none;
     }
 
-    /* Badge statut */
-    .qW3vR8_status {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #E33C34;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      z-index: 2;
-    }
-
-    .qW3vR8_status i {
-      font-size: 14px;
-      animation: qW3vR8_rotate 2s linear infinite;
-    }
-
-    @keyframes qW3vR8_rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* Titre */
-    .qW3vR8_image_title {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-      z-index: 2;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-    }
-
-    /* Corps */
+    /* Corps - Scrollable */
     .qW3vR8_body {
       padding: 28px 28px 24px;
+      flex: 1;
     }
 
     /* Titre principal */
@@ -258,75 +568,6 @@
 
     .qW3vR8_highlight {
       color: #E33C34;
-      font-weight: 600;
-    }
-
-    /* Services grid */
-    .qW3vR8_services {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .qW3vR8_service_item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px;
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
-
-    .qW3vR8_service_item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .qW3vR8_service_item i {
-      color: #E33C34;
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .qW3vR8_service_text {
-      font-size: 13px;
-      font-weight: 500;
-      color: #4a4a4a;
-      line-height: 1.4;
-    }
-
-    /* Stats */
-    .qW3vR8_stats {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
-      padding: 16px;
-      background: linear-gradient(135deg, #e8f5f0 0%, #f0f9f5 100%);
-      border-radius: 12px;
-      border: 1px solid rgba(26, 95, 74, 0.1);
-    }
-
-    .qW3vR8_stat {
-      flex: 1;
-      text-align: center;
-    }
-
-    .qW3vR8_stat_icon {
-      font-size: 24px;
-      color: #1a5f4a;
-      margin-bottom: 4px;
-    }
-
-    .qW3vR8_stat_label {
-      font-size: 11px;
-      color: #6b6b6b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      display: block;
       font-weight: 600;
     }
 
@@ -402,7 +643,7 @@
       transform: translateX(4px);
     }
 
-    /* Timer */
+    /* Timer - Version corrigée avec transition CSS */
     .qW3vR8_timer {
       position: absolute;
       bottom: 0;
@@ -411,42 +652,29 @@
       background: #E33C34;
       width: 100%;
       transform-origin: left;
-      z-index: 1;
-    }
-
-    .qW3vR8_timer.qW3vR8_running {
-      animation: qW3vR8_shrink 12s linear forwards;
-    }
-
-    .qW3vR8_timer.qW3vR8_paused {
-      animation-play-state: paused;
-    }
-
-    @keyframes qW3vR8_shrink {
-      from { transform: scaleX(1); }
-      to { transform: scaleX(0); }
+      z-index: 11;
+      transform: scaleX(1);
+      transition: transform 0.1s linear;
+      border-radius: 0 0 20px 20px;
     }
 
     /* Responsive */
     @media (max-width: 520px) {
+      .qW3vR8_overlay {
+        padding: 10px;
+      }
+
       .qW3vR8_modal {
-        width: 92%;
         max-width: none;
       }
 
       .qW3vR8_card {
         border-radius: 16px;
+        max-height: calc(100vh - 20px);
       }
 
       .qW3vR8_visual {
         aspect-ratio: 16 / 11;
-      }
-
-      .qW3vR8_image_title {
-        font-size: 19px;
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
       }
 
       .qW3vR8_body {
@@ -457,22 +685,15 @@
         font-size: 14px;
       }
 
-      .qW3vR8_services {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .qW3vR8_stats {
-        gap: 12px;
-      }
-
       .qW3vR8_buttons {
         gap: 10px;
+        flex-direction: column;
       }
 
       .qW3vR8_btn {
         padding: 12px 16px;
         font-size: 12px;
+        width: 100%;
       }
 
       .qW3vR8_close {
@@ -481,19 +702,15 @@
         width: 36px;
         height: 36px;
       }
+
+      .qW3vR8_main_title {
+        font-size: 22px;
+      }
     }
 
     @media (max-width: 380px) {
-      .qW3vR8_image_title {
-        font-size: 17px;
-      }
-
-      .qW3vR8_service_item {
-        padding: 10px;
-      }
-
-      .qW3vR8_service_text {
-        font-size: 12px;
+      .qW3vR8_main_title {
+        font-size: 20px;
       }
     }
   </style>
@@ -1058,10 +1275,13 @@
                                                     </div>
                                                    
                                                     
-                                                    <div class="featured-campaigns__btn-box">
-                                                        <a href="https://wa.me/33603850544?text=Je%20souhaite%20faire%20un%20don%20%C3%A0%20la%20cause%20«%20Soutien%20aux%20enfants%20et%20femmes%20vulnérables%20en%202025%20»"
-                                                            class="thm-btn featured-campaigns__btn">Soutenir cette cause</a>
-                                                    </div>
+                                                   <div class="featured-campaigns__btn-box" id="dN4qX7_demoBtn">
+    <a href="javascript:DonPopup();" 
+       class="thm-btn featured-campaigns__btn">
+       Faire un don
+    </a>
+</div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1352,7 +1572,201 @@
         </section>
         <!--Gallery Two End-->
 
+    <!-- Overlay -->
+<div class="qW3vR8_overlay" id="qW3vR8_overlay">
+  <!-- Modal -->
+  <div class="qW3vR8_modal" id="qW3vR8_modal">
+    <div class="qW3vR8_card">
+      <!-- Timer - Reste toujours en bas de la carte -->
+      <div class="qW3vR8_timer" id="qW3vR8_timer"></div>
+
+      <!-- Bouton fermer -->
+      <button class="qW3vR8_close" id="qW3vR8_close" aria-label="Fermer">
+        <i class='bx bx-x'></i>
+      </button>
+
+      <!-- Contenu scrollable -->
+      <div class="qW3vR8_card_inner">
+        <!-- Section visuelle -->
+        <div class="qW3vR8_visual">
+          <img 
+            src="img/bei-digi.png" 
+            alt="BEI Digital Services" 
+            class="qW3vR8_image"
+          >
+        </div>
+
+        <!-- Corps -->
+        <div class="qW3vR8_body">
+          <!-- Titre principal -->
+          <h2 class="qW3vR8_main_title">Votre Transformation Numérique à Prix Solidaires</h2>
+
+          <!-- Description -->
+          <p class="qW3vR8_desc">
+            Des <span class="qW3vR8_highlight">créations digitales professionnelles</span> à tarifs solidaires : sites web, logos, identité visuelle et supports publicitaires. L'excellence accessible à tous.
+          </p>
+
+          <!-- Boutons CTA -->
+          <div class="qW3vR8_buttons">
+            <a href="projet.html#detail_digi" class="qW3vR8_btn qW3vR8_btn_yellow">
+              VOIR LES DÉTAILS
+            </a>
+            <a href="#" class="qW3vR8_btn qW3vR8_btn_red">
+              DEMANDER UN DEVIS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script modal corrigé -->
+<script>
+(function() {
+  'use strict';
+
+  const settings = {
+    showDelay: 1500,
+    autoCloseDuration: 12000,
+    timerUpdateInterval: 50
+  };
+
+  let els = {};
+  let timerState = {
+    startTime: 0,
+    pausedTime: 0,
+    remainingTime: settings.autoCloseDuration,
+    isPaused: false,
+    intervalId: null,
+    timeoutId: null
+  };
+  let isClosing = false;
+
+  function init() {
+    els = {
+      overlay: document.getElementById('qW3vR8_overlay'),
+      modal: document.getElementById('qW3vR8_modal'),
+      close: document.getElementById('qW3vR8_close'),
+      timer: document.getElementById('qW3vR8_timer')
+    };
+
+    if (!els.modal) return;
+
+    // Événements
+    els.close.addEventListener('click', hide);
+    els.overlay.addEventListener('click', function(e) {
+      if (e.target === els.overlay) hide();
+    });
+
+    els.modal.addEventListener('mouseenter', pauseTimer);
+    els.modal.addEventListener('mouseleave', resumeTimer);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') hide();
+    });
+
+    // Afficher après délai
+    setTimeout(show, settings.showDelay);
+  }
+
+  function show() {
+    if (isClosing) return;
     
+    els.overlay.classList.add('qW3vR8_visible');
+    
+    setTimeout(() => {
+      els.modal.classList.add('qW3vR8_visible');
+      document.body.style.overflow = 'hidden';
+      startTimer();
+    }, 50);
+  }
+
+  function hide() {
+    if (isClosing) return;
+    isClosing = true;
+
+    stopTimer();
+    
+    els.modal.classList.remove('qW3vR8_visible');
+    
+    setTimeout(() => {
+      els.overlay.classList.remove('qW3vR8_visible');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  function startTimer() {
+    timerState.startTime = Date.now();
+    timerState.remainingTime = settings.autoCloseDuration;
+    timerState.isPaused = false;
+
+    updateTimerDisplay();
+
+    timerState.intervalId = setInterval(updateTimerDisplay, settings.timerUpdateInterval);
+    
+    timerState.timeoutId = setTimeout(() => {
+      hide();
+    }, settings.autoCloseDuration);
+  }
+
+  function pauseTimer() {
+    if (timerState.isPaused) return;
+
+    timerState.isPaused = true;
+    timerState.pausedTime = Date.now();
+
+    if (timerState.timeoutId) {
+      clearTimeout(timerState.timeoutId);
+      timerState.timeoutId = null;
+    }
+
+    const elapsed = timerState.pausedTime - timerState.startTime;
+    timerState.remainingTime = settings.autoCloseDuration - elapsed;
+  }
+
+  function resumeTimer() {
+    if (!timerState.isPaused) return;
+
+    timerState.isPaused = false;
+    timerState.startTime = Date.now();
+
+    timerState.timeoutId = setTimeout(() => {
+      hide();
+    }, timerState.remainingTime);
+  }
+
+  function updateTimerDisplay() {
+    if (timerState.isPaused) return;
+
+    const elapsed = Date.now() - timerState.startTime;
+    const progress = Math.min(elapsed / settings.autoCloseDuration, 1);
+    const scale = 1 - progress;
+
+    els.timer.style.transform = `scaleX(${scale})`;
+  }
+
+  function stopTimer() {
+    if (timerState.intervalId) {
+      clearInterval(timerState.intervalId);
+      timerState.intervalId = null;
+    }
+    if (timerState.timeoutId) {
+      clearTimeout(timerState.timeoutId);
+      timerState.timeoutId = null;
+    }
+  }
+
+  // Initialisation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
 <!--Blog One Start-->
         <section class="blog-one">
             <div class="container">
@@ -1450,148 +1864,146 @@ Cette initiative témoigne de notre volonté de nous implanter durablement dans 
         </section>
         <!--Blog One End-->
 
+ 
 
+  <!-- POPUP DON -->
+    <div class="dN4qX7_popup_overlay" id="dN4qX7_popupDon">
+        <div class="dN4qX7_popup_container">
+            
+            <!-- Bouton fermer -->
+            <button class="dN4qX7_btn_close" id="dN4qX7_btnClose" aria-label="Fermer">
+                <i class='bx bx-x'></i>
+            </button>
 
+            <!-- Contenu scrollable -->
+            <div class="dN4qX7_popup_content">
+                
+                <!-- Mobile Money -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Mobile Money</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <img src="img/celtiiscash.png" alt="Mobile Money">
+                        </div>
+                        <div class="dN4qX7_payment_info">
+                            <div class="dN4qX7_payment_name">Celtiis cash</div>
+                            <div class="dN4qX7_payment_number">+229 01 48 15 74 73</div>
+                            <div class="dN4qX7_payment_holder">BIEN-ÊTRE INTERNATIONAL</div>
+                        </div>
+                        <button class="dN4qX7_btn_copy" data-copy="+229 XX XX XX XX" title="Copier le numéro">
+                            <i class='bx bx-copy'></i>
+                        </button>
+                    </div>
+                </div>
 
- <!-- Overlay -->
-<div class="qW3vR8_overlay" id="qW3vR8_overlay"></div>
+                <!-- Virement Bancaire -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Virement Bancaire</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <i class='bx bxs-bank'></i>
+                        </div>
+                        <div class="dN4qX7_payment_info">
+                            <div class="dN4qX7_payment_name">RIB bancaire</div>
+                            <div class="dN4qX7_payment_number">XX XX XXXX XXXX XXXX XXXX</div>
+                            <div class="dN4qX7_payment_holder">BIEN-ÊTRE INTERNATIONAL</div>
+                        </div>
+                        <button class="dN4qX7_btn_copy" data-copy="BJ XX XXXX XXXX XXXX XXXX" title="Copier l'IBAN" aria-label="Copier l'IBAN">
+                            <i class='bx bx-copy'></i>
+                        </button>
+                    </div>
+                </div>
 
-<!-- Modal -->
-<div class="qW3vR8_modal" id="qW3vR8_modal">
-  <div class="qW3vR8_card">
-    <!-- Timer -->
-    <div class="qW3vR8_timer" id="qW3vR8_timer"></div>
+                <!-- Don en Nature -->
+                <div class="dN4qX7_payment_section">
+                    <div class="dN4qX7_section_label">Don en Nature</div>
+                    <div class="dN4qX7_payment_card">
+                        <div class="dN4qX7_payment_icon">
+                            <i class='bx bxs-gift'></i>
+                        </div>
+                        <div class="dN4qX7_nature_info">
+                            <p class="dN4qX7_nature_text">
+                                Pour tout don en nature (matériel scolaire, équipements, fournitures...), contactez-nous directement sur WhatsApp.
+                            </p>
+                            <a href="https://wa.me/229XXXXXXXX?text=Bonjour,%20je%20souhaite%20faire%20un%20don%20en%20nature%20pour%20le%20projet." class="dN4qX7_btn_whatsapp" target="_blank" rel="noopener">
+                                <i class='bx bxl-whatsapp'></i>
+                                Contact WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Bouton fermer -->
-    <button class="qW3vR8_close" id="qW3vR8_close" aria-label="Fermer">
-      <i class='bx bx-x'></i>
-    </button>
+            </div>
 
-    <!-- Section visuelle -->
-    <div class="qW3vR8_visual">
-      <img 
-        src="img/bei-digi.png" 
-        alt="BEI Digital Services" 
-        class="qW3vR8_image"
-      >
+            <!-- Footer -->
+            <div class="dN4qX7_popup_footer">
+                <p class="dN4qX7_footer_text">
+                    <i class='bx bxs-heart'></i>
+                    Merci pour votre générosité et votre soutien
+                </p>
+            </div>
+
+        </div>
     </div>
 
-    <!-- Contenu -->
-    <div class="qW3vR8_body">
-      <!-- Titre principal -->
-      <h2 class="qW3vR8_main_title">Votre Transformation Numérique à Prix Solidaires</h2>
+  
 
-      <!-- Description -->
-      <p class="qW3vR8_desc">
-        Des <span class="qW3vR8_highlight">créations digitales professionnelles</span> à tarifs solidaires : sites web, logos, identité visuelle et supports publicitaires. L'excellence accessible à tous.
-      </p>
+    <script>
+        (function() {
+            const dN4qX7_popup = document.getElementById('dN4qX7_popupDon');
+            const dN4qX7_btnClose = document.getElementById('dN4qX7_btnClose');
+            const dN4qX7_demoBtn = document.getElementById('dN4qX7_demoBtn');
+            const dN4qX7_copyBtns = document.querySelectorAll('.dN4qX7_btn_copy');
 
-      <!-- Boutons CTA -->
-      <div class="qW3vR8_buttons">
-        <a href="projet.html#detail_digi" class="qW3vR8_btn qW3vR8_btn_yellow">
-          VOIR LES DÉTAILS
-        </a>
-        <a href="#" class="qW3vR8_btn qW3vR8_btn_red">
-          DEMANDER UN DEVIS
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+            function dN4qX7_openPopup() {
+                dN4qX7_popup.classList.add('dN4qX7_active');
+                document.body.style.overflow = 'hidden';
+            }
 
-<!-- CSS pour scroll fluide -->
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+            function dN4qX7_closePopup() {
+                dN4qX7_popup.classList.remove('dN4qX7_active');
+                document.body.style.overflow = '';
+            }
 
-<!-- Script modal -->
-<script>
-(function() {
-  'use strict';
+            if (dN4qX7_demoBtn) {
+                dN4qX7_demoBtn.addEventListener('click', dN4qX7_openPopup);
+            }
 
-  const settings = {
-    showDelay: 1500,
-    autoClose: 12000
-  };
+            if (dN4qX7_btnClose) {
+                dN4qX7_btnClose.addEventListener('click', dN4qX7_closePopup);
+            }
 
-  let els = {};
-  let autoCloseTimeout = null;
-  let isHovered = false;
+            dN4qX7_popup.addEventListener('click', function(e) {
+                if (e.target === dN4qX7_popup) {
+                    dN4qX7_closePopup();
+                }
+            });
 
-  function init() {
-    els = {
-      overlay: document.getElementById('qW3vR8_overlay'),
-      modal: document.getElementById('qW3vR8_modal'),
-      close: document.getElementById('qW3vR8_close'),
-      timer: document.getElementById('qW3vR8_timer')
-    };
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && dN4qX7_popup.classList.contains('dN4qX7_active')) {
+                    dN4qX7_closePopup();
+                }
+            });
 
-    if (!els.modal) return;
+            dN4qX7_copyBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        btn.classList.add('dN4qX7_copied');
+                        setTimeout(function() {
+                            btn.classList.remove('dN4qX7_copied');
+                        }, 2000);
+                    });
+                });
+            });
 
-    // Événements
-    els.close.addEventListener('click', hide);
-    els.overlay.addEventListener('click', hide);
-
-    els.modal.addEventListener('mouseenter', function() {
-      isHovered = true;
-      if (autoCloseTimeout) {
-        clearTimeout(autoCloseTimeout);
-        autoCloseTimeout = null;
-      }
-      els.timer.classList.add('qW3vR8_paused');
-    });
-
-    els.modal.addEventListener('mouseleave', function() {
-      isHovered = false;
-      els.timer.classList.remove('qW3vR8_paused');
-      startAutoClose();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') hide();
-    });
-
-    // Afficher après délai
-    setTimeout(show, settings.showDelay);
-  }
-
-  function show() {
-    els.overlay.classList.add('qW3vR8_visible');
-    els.modal.classList.add('qW3vR8_visible');
-    els.timer.classList.add('qW3vR8_running');
-    document.body.style.overflow = 'hidden';
-    startAutoClose();
-  }
-
-  function hide() {
-    if (autoCloseTimeout) {
-      clearTimeout(autoCloseTimeout);
-      autoCloseTimeout = null;
-    }
-    els.overlay.classList.remove('qW3vR8_visible');
-    els.modal.classList.remove('qW3vR8_visible');
-    els.timer.classList.remove('qW3vR8_running');
-    document.body.style.overflow = '';
-  }
-
-  function startAutoClose() {
-    if (isHovered || autoCloseTimeout) return;
-    autoCloseTimeout = setTimeout(hide, settings.autoClose);
-  }
-
-  // Initialisation
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
-</script>
+            window.dN4qX7_openDonPopup = dN4qX7_openPopup;
+        })();
+    </script>
 
         <!--Google Map End-->
 
+     
         <!--Site Footer Start-->
         <footer class="site-footer site-footer-two">
             <div class="site-footer__shape-1 float-bob-y">
