@@ -224,7 +224,7 @@
         .dN4qX7_payment_number {
             font-size: 18px;
             font-weight: 700;
-            color: #1e293b;
+            color: #1e293b !important;
             letter-spacing: 0.5px;
         }
 
@@ -588,6 +588,7 @@
       font-size: 13px;
       font-weight: 600;
       text-decoration: none;
+        letter-spacing: var(--wishon-letter-spacing-two);
       border: none;
       border-radius: 12px;
       cursor: pointer;
@@ -595,6 +596,7 @@
       overflow: hidden;
       transition: all 0.3s ease;
     }
+    
 
     .qW3vR8_btn::before {
       content: '';
@@ -686,8 +688,9 @@
       }
 
       .qW3vR8_buttons {
-        gap: 10px;
-        flex-direction: column;
+        display: flex;
+      gap: 10px;
+      margin-top: 24px;
       }
 
       .qW3vR8_btn {
