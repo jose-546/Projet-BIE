@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for file in contact.html projet.html motPR.html become-volunteer.html)",
+      "Bash(do echo \"Updating $file\")",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
